@@ -1,0 +1,67 @@
+---
+layout: layouts/home.html
+---
+
+{% include "partials/banner.html" %}
+
+<section class="skills">
+    <div class="container">
+        <h2>Skills & Technologies</h2>
+        
+        <h3 class="mt-8">Interpersonal</h3>
+        <ul class="box-list">
+            <li>Clear & forward communication</li>
+            <li>Emphasis on kindness & uplifting peers</li>
+            <li>Productive & constructive feedback</li>
+            <li>Curiosity-first & growth mindset</li>
+        </ul>
+
+        <h3 class="mt-8">Technologies</h3>
+        <ul class="expand-list">
+            <li>
+                <details>
+                    <summary><h4>HTML & CSS (+ SASS, Tailwind, PostCSS)</h4></summary>
+                    <p>With nearly a decade of experience with HTML and CSS, I thrive on solving difficult layout challenges. I've executed a variety of designs in a variety of visual styles, and always put semantic and accessible HTML and visual contrast at the forefront of my work.</p>
+                </details>
+            </li>
+            <li><details>
+                    <summary><h4>JavaScript</h4></summary>
+                    <p>Over the years, I've witnessed the rise and fall of jQuery in the broader ecosystem as the specifications and features of vanilla JavaScript have expanded to eclipse its need. My strong JavaScript knowledge has let me adapt to and learn new frameworks quickly and seamlessly.</p>
+                </details>
+            </li>
+            <li><details>
+                    <summary><h4>Vue.js & React</h4></summary>
+                    <p>I've worked with Vue.js in a professional capacity for over four years, ranging from small embedded features to larger robust applications. I've managed complex states with both Vuex and Pinia.</p>
+
+                    <p>React is a more recent skill, of interest due to its popularity and its one-way data flow. It's intuitive and interesting so far, and you'll be able to see an example of it on this site soon.</p>
+                </details>
+            </li>
+            <li><details>
+                    <summary><h4>PHP (+ Laravel)</h4></summary>
+                    <p>I've been working with PHP for around nine years, and was introduced to some of the basic Laravel concepts through Laravel's Bedrock & Sage. I've been eager to move out of the WordPress ecosystem and into more robust frameworks like Laravel with the help of educational resources like Laracasts.</p>
+                </details>
+            </li>
+            <li><details>
+                    <summary><h4>WordPress (+ Blocks, Advanced Custom Fields)</h4></summary>
+                    <p>My nearly decade-long history with WordPress has been fraught with equal parts fulfillment and despair. I've worked on primarily fully custom themes and plugins (no site builders), building robust flexible layouts and content blocks with Advanced Custom Fields. As with any CMS, I love creating easy-to-use and beautiful block options for content editors. I've also worked with WooCommerce, overhauling shop templates with hooks and integrating complex features.</p>
+                </details>
+            </li>
+            <li class="bg-dark text-white font-semibold px-3 py-2 mb-2  border-l-4 border-l-blue">MySQL</li>
+        </ul>
+    </div>
+</section>
+
+## Projects
+<ul>
+    {%- for project in collections.project -%}
+    <li>
+        <a href="{{ project.url }}">{{ project.data.title }}</a>
+        {%- for tech in project.data.tech -%}
+            {{ tech }}
+        {%- endfor -%}
+    </li>
+    {%- endfor -%}
+</ul>
+
+## Blog
+test

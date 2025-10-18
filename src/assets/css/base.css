@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+/* To-do: remove unused font weights */
+
+
+@theme {
+    --color-blue: #11A9F9;
+    --color-dark: #212121;
+    --color-dark-100: #262626;
+    --color-medium: #333333;
+    --color-light: #464B50;
+    --color-white: #F9F9F9;
+
+    --font-sans: 'Noto Sans';
+    --font-serif: 'Antic Didone';
+}
+
+@layer components {
+    .btn-primary {
+        @apply inline-block border-blue text-white font-semibold hover:bg-blue hover:text-dark border-1 border-solid px-6 py-2 motion-safe:transition;
+    }
+}
+
+body {
+    @apply text-white bg-dark font-sans font-light leading-relaxed border-t-8 border-t-blue;
+}
+
+b {
+    @apply font-black text-blue;
+}
+
+.btn-primary:has(.icon) {
+    @apply inline-flex items-center pl-4;
+}
+
+.btn + .btn {
+    @apply ml-3;
+}
+
+p + p {
+    @apply mt-3;
+}
+
+.icon {
+    max-height: 16px;
+}
+
+.container {
+    @apply w-full px-6;
+    max-width: 1200px;
+
+    @variant md {
+        @apply px-12;
+    }
+
+    @variant lg {
+        @apply px-24;
+    }
+}
+
+details {
+    @apply shadow-lg bg-dark-100 text-white mb-2;
+
+    &[open] {
+        @apply pb-2;
+
+        summary {
+            @apply mb-2;
+
+            &::after {
+                content: '-';
+            }
+        }
+    }
+
+    summary {
+        @apply flex items-center justify-between list-none bg-dark text-white font-semibold px-3 py-2 cursor-pointer border-l-4 border-l-blue hover:bg-dark-100 transition;
+
+        &::marker {
+            @apply hidden;
+        }
+
+        &::after {
+            @apply font-bold text-lg;
+            content: '+';
+        }
+    }
+
+    p {
+        @apply px-6;
+    }
+}
+
+h1 {
+    @apply text-6xl text-blue font-serif tracking-wide font-black mb-2;
+}
+
+h2 {
+    @apply text-5xl text-blue font-serif tracking-wide font-black mb-2;
+}
+
+h3 {
+    @apply text-3xl text-white font-serif tracking-wide font-black mb-2;
+}
+
+.box-list {
+    @apply flex gap-4 flex-wrap mb-2;
+
+    li {
+        @apply py-6 px-4 bg-dark border-blue border-l-4 flex-grow leading-tight;
+        flex-basis: calc(25% - 1rem);
+    }
+}

@@ -1,6 +1,6 @@
 ---
-tags: project
 title: Portfolio Site (using 11ty)
+tags: project
 tech:
 - 11ty
 - Vite

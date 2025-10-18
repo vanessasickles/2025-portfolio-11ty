@@ -1,0 +1,25 @@
+@import "./base.css";
+
+.banner {
+    height: 40vh;
+    min-height: 400px;
+}
+
+.banner .container {
+    @apply h-full flex items-center;
+}
+
+.header-content {
+    max-width: 600px;
+
+    @variant md {
+        @apply w-3/4;
+    }
+    @variant lg {
+        @apply w-7/12;
+    }
+}
+
+.skills {
+    @apply bg-medium py-16;
+}

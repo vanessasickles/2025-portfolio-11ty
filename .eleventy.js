@@ -1,12 +1,24 @@
 
 import EleventyVitePlugin from '@11ty/eleventy-plugin-vite';
-import tailwindcss from '@tailwindcss/vite'
+import pluginIcons from 'eleventy-plugin-icons';
+import tailwindcss from '@tailwindcss/vite';
 
 export default function (eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
 		viteOptions: {
-			plugins: [tailwindcss()],
+			plugins: ['tailwindcss/nesting', tailwindcss()],
 		},
+	});
+	eleventyConfig.addPlugin(pluginIcons, {
+		mode: 'inline',
+		sources: [
+			{
+				name: 'custom',
+				path: './src/assets/icons',
+				default: true,
+				class: (name, source) => `icon icon-${name}`,
+			}
+		]
 	});
 
 	eleventyConfig.addPassthroughCopy('src/assets');
