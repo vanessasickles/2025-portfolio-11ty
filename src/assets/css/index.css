@@ -10,6 +10,7 @@
 }
 
 .header-content {
+    @apply mt-12;
     max-width: 600px;
 
     @variant md {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 /* To-do: remove unused font weights */
 
@@ -13,11 +13,19 @@
 
     --font-sans: 'Noto Sans';
     --font-serif: 'Antic Didone';
+    --font-display: 'Raleway';
 }
 
 @layer components {
     .btn-primary {
-        @apply inline-block border-blue text-white font-semibold hover:bg-blue hover:text-dark border-1 border-solid px-6 py-2 motion-safe:transition;
+        @apply inline-block relative border-blue text-white font-semibold hover:text-dark border-1 border-solid px-6 py-2 motion-safe:transition bg-no-repeat;
+        background-size: 0% 100%;
+        background-image: linear-gradient(var(--color-blue));
+        transition: background 0.25s, color 0.15s;
+
+        &:hover {
+            background-size: 100% 100%;
+        }
     }
 }
 
@@ -27,6 +35,21 @@ body {
 
 b {
     @apply font-black text-blue;
+}
+
+a:not(.btn) {
+    @apply relative;
+
+    &::after {
+        @apply absolute left-0 -bottom-1 w-0 h-0.5 bg-blue;
+        transition: width 0.25s;
+        content: '';
+    }
+
+    &:hover::after {
+        @apply w-full;
+        transition: width 0.25s;
+    }
 }
 
 .btn-primary:has(.icon) {
@@ -46,7 +69,7 @@ p + p {
 }
 
 .container {
-    @apply w-full px-6;
+    @apply relative w-full px-6 m-auto;
     max-width: 1200px;
 
     @variant md {
@@ -55,6 +78,19 @@ p + p {
 
     @variant lg {
         @apply px-24;
+    }
+}
+
+.top-nav.container {
+    @apply z-10 fixed top-8 -left-8 -right-6 flex justify-stretch;
+    max-width: calc(1200px + 4rem);
+
+    nav {
+        @apply w-full py-3 px-6 flex items-center justify-between shadow-lg rounded-full bg-dark-100;
+    }
+
+    ul {
+        @apply flex gap-4 font-normal;
     }
 }
 
