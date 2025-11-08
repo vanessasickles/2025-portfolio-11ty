@@ -42,7 +42,7 @@
     }
 
     .work-description {
-        @apply flex flex-wrap gap-x-3 gap-y-2 mt-2 text-xl lowercase;
+        @apply flex flex-wrap gap-x-8 gap-y-0 mt-2 text-xl lowercase;
     }
 
     .work-data {
