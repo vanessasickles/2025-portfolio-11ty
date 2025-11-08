@@ -2,9 +2,56 @@
 layout: layouts/home.html
 ---
 
-<sections class="projects">
-    <h2 class="mb-2">Projects</h2>
-    <div class="box">
-        <article>project</article>
-    </div>
-</sections>
+<main>
+    <section class="projects mb-12">
+        <h2 class="mb-2">Projects</h2>
+        <div class="box">
+            {%- for project in collections.project -%}
+            <article class="project" data-name="{{ project.data.title | classify }}" data-tech="{{ project.data.tech | arrayCommaJoin }}">
+                <a class="name" href="{{ project.url }}">{{ project.data.title }}</a>
+                <ul class="tech-used">
+                    {%- for tech in project.data.tech -%}
+                        <li class="{{ tech }}">{{ tech }}</li>
+                    {%- endfor -%}
+                </ul>
+            </article>
+            {%- endfor -%}
+        </div>
+    </section>
+
+    <section class="experience">
+        <h2 class="mb-2">Experience</h2>
+        <ul class="box">
+            <li class="workplace">
+                <h3>Frontend Engineer <b>@</b> Corporate Tools</h3>
+                <div class="work-data"><span class="duration">3yr 8mo</span> • <span class="work-type">Remote</span></div>
+                <ul class="work-description">
+                    <li>item</li>
+                    <li>item</li>
+                    <li>item</li>
+                </ul>
+            </li>
+            <li class="workplace">
+                <h3>Frontend Engineer <b>@</b> Matchbox Design Group</h3>
+                <div class="work-data"><span class="duration">3yr 8mo</span> • <span class="work-type">Remote</span></div>
+                <ul class="work-description">
+                    <li>item</li>
+                    <li>item</li>
+                    <li>item</li>
+                </ul>
+            </li>
+            <li class="workplace">
+                <h3>Adjunct Instructor (Web Development) <b>@</b> Maryville University</h3>
+                <div class="work-data"><span class="duration">4yr+</span> • <span class="work-type">On-site</span> • <span>Ongoing</span></div>
+                <ul class="work-description">
+                    <li>item</li>
+                    <li>item</li>
+                    <li>item</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</main>
+
+
+</section>

@@ -1,11 +1,12 @@
 ---
-title: Portfolio Site (using 11ty)
+title: Portfolio Site with 11ty, TailwindCSS
 tags: project
 tech:
 - 11ty
 - Vite
 - TailwindCSS
-- React
+- JavaScript
+- Git
 ---
 
 # Building a Portfolio Site with 11ty, Tailwind CSS, Vite, and React

@@ -1,23 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
 /* To-do: remove unused font weights */
 
 
 @theme {
-    --color-blue: #11A9F9;
-    --color-dark: #212121;
-    --color-dark-100: #262626;
-    --color-medium: #333333;
-    --color-light: #464B50;
-    --color-white: #F9F9F9;
+    --color-blue: #0e75c1;
+    --color-white: #f7faee;
+    --color-black: #1d3557;
+    --color-black-tint: #90939A;
 
-    --font-sans: 'Noto Sans';
-    --font-serif: 'Antic Didone';
-    --font-display: 'Raleway';
+    --font-sans: "Merriweather Sans", sans-serif;
+
+    --default-transition-duration: 0.15s;
 }
 
 @layer components {
-    .btn-primary {
+    /* .btn-primary {
         @apply inline-block relative border-blue text-white font-semibold hover:text-dark border-1 border-solid px-6 py-2 motion-safe:transition bg-no-repeat;
         background-size: 0% 100%;
         background-image: linear-gradient(var(--color-blue));
@@ -26,124 +24,61 @@
         &:hover {
             background-size: 100% 100%;
         }
-    }
+    } */
 }
 
 body {
-    @apply text-white bg-dark font-sans font-light leading-relaxed border-t-8 border-t-blue;
+    @apply bg-white p-8 grid gap-8 font-sans text-black w-full;
+
+    grid-template-columns: 20% calc(80% - 2rem);
+    grid-template-areas:
+        "sidebar main";
 }
 
-b {
-    @apply font-black text-blue;
+.sidebar-column {
+    grid-area: sidebar;
 }
 
-a:not(.btn) {
-    @apply relative;
+main {
+    grid-area: main;
+}
 
-    &::after {
-        @apply absolute left-0 -bottom-1 w-0 h-0.5 bg-blue;
-        transition: width 0.25s;
-        content: '';
+.logo {
+    @apply text-7xl font-black leading-none;
+}
+
+.box {
+    @apply border-2 border-black-tint p-8;
+
+    & + .box {
+        @apply mt-8;
     }
-
-    &:hover::after {
-        @apply w-full;
-        transition: width 0.25s;
-    }
-}
-
-.btn-primary:has(.icon) {
-    @apply inline-flex items-center pl-4;
-}
-
-.btn + .btn {
-    @apply ml-3;
-}
-
-p + p {
-    @apply mt-3;
 }
 
 .icon {
-    max-height: 16px;
-}
+    @apply w-8 h-8;
 
-.container {
-    @apply relative w-full px-6 m-auto;
-    max-width: 1200px;
-
-    @variant md {
-        @apply px-12;
-    }
-
-    @variant lg {
-        @apply px-24;
+    path {
+        @apply !fill-black transition;
     }
 }
 
-.top-nav.container {
-    @apply z-10 fixed top-8 -left-8 -right-6 flex justify-stretch;
-    max-width: calc(1200px + 4rem);
-
-    nav {
-        @apply w-full py-3 px-6 flex items-center justify-between shadow-lg rounded-full bg-dark-100;
-    }
-
-    ul {
-        @apply flex gap-4 font-normal;
-    }
+b {
+    @apply text-blue font-black;
 }
 
-details {
-    @apply shadow-lg bg-dark-100 text-white mb-2;
+a {
+    @apply transition;
 
-    &[open] {
-        @apply pb-2;
+    &:hover {
+        @apply text-blue transition;
 
-        summary {
-            @apply mb-2;
-
-            &::after {
-                content: '-';
-            }
+        .icon path {
+            @apply !fill-blue transition;
         }
     }
-
-    summary {
-        @apply flex items-center justify-between list-none bg-dark text-white font-semibold px-3 py-2 cursor-pointer border-l-4 border-l-blue hover:bg-dark-100 transition;
-
-        &::marker {
-            @apply hidden;
-        }
-
-        &::after {
-            @apply font-bold text-lg;
-            content: '+';
-        }
-    }
-
-    p {
-        @apply px-6;
-    }
-}
-
-h1 {
-    @apply text-6xl text-blue font-serif tracking-wide font-black mb-2;
 }
 
 h2 {
-    @apply text-5xl text-blue font-serif tracking-wide font-black mb-2;
-}
-
-h3 {
-    @apply text-3xl text-white font-serif tracking-wide font-black mb-2;
-}
-
-.box-list {
-    @apply flex gap-4 flex-wrap mb-2;
-
-    li {
-        @apply py-6 px-4 bg-dark border-blue border-l-4 flex-grow leading-tight;
-        flex-basis: calc(25% - 1rem);
-    }
+    @apply text-4xl font-black lowercase;
 }

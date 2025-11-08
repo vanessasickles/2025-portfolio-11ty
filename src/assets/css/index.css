@@ -1,26 +1,51 @@
 @import "./base.css";
 
-.banner {
-    height: 40vh;
-    min-height: 400px;
+.intro .links {
+    @apply flex gap-2 mt-4 mb-12;
 }
 
-.banner .container {
-    @apply h-full flex items-center;
-}
+#technologies-list {
+    @apply flex flex-wrap gap-x-12 gap-y-2;
 
-.header-content {
-    @apply mt-12;
-    max-width: 600px;
+    li button {
+        @apply text-5xl font-black lowercase cursor-pointer relative;
 
-    @variant md {
-        @apply w-3/4;
-    }
-    @variant lg {
-        @apply w-7/12;
+        &:hover {
+            @apply text-blue;
+        }
     }
 }
 
-.skills {
-    @apply bg-medium py-16;
+.project {
+    .name {
+        @apply text-5xl font-black lowercase;
+    }
+
+    .tech-used {
+        @apply flex gap-x-3 gap-y-2 mt-2 text-xl lowercase;
+    }
+
+    & + .project {
+        @apply mt-8;
+    }
+}
+
+.experience {
+    .workplace {
+        & + .workplace {
+            @apply mt-8;
+        }
+
+        h3 {
+            @apply text-4xl font-black lowercase;
+        }
+    }
+
+    .work-description {
+        @apply flex flex-wrap gap-x-3 gap-y-2 mt-2 text-xl lowercase;
+    }
+
+    .work-data {
+        @apply flex gap-2 flex-wrap lowercase;
+    }
 }
