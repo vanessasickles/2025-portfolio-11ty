@@ -1,20 +1,24 @@
 ---
-layout: layouts/home.html
+layout: layouts/base.html
 ---
 
+{% include "partials/sidebar.html" %}
+
 <main>
-    <section class="projects mb-12">
+    <section class="projects mb-8 mt-8 xl:mb-12 xl:mt-0">
         <h2 class="mb-2">Projects</h2>
         <div class="box">
             {%- for project in collections.project -%}
-            <article class="project" data-name="{{ project.data.title | classify }}" data-tech="{{ project.data.tech | arrayCommaJoin }}">
-                <a class="name" href="{{ project.url }}">{{ project.data.title }}</a>
-                <ul class="tech-used">
-                    {%- for tech in project.data.tech -%}
-                        <li class="{{ tech }}">{{ tech }}</li>
-                    {%- endfor -%}
-                </ul>
-            </article>
+            <div class="project-wrap">
+                <article class="project" data-name="{{ project.data.pageTitle | classify }}" data-tech="{{ project.data.tech | arrayCommaJoin }}">
+                    <a class="name" href="{{ project.url }}">{{ project.data.pageTitle }}</a>
+                    <ul class="tech-used">
+                        {%- for tech in project.data.tech -%}
+                            <li class="{{ tech }}">{{ tech }}</li>
+                        {%- endfor -%}
+                    </ul>
+                </article>
+            </div>
             {%- endfor -%}
         </div>
     </section>
@@ -60,14 +64,16 @@ layout: layouts/home.html
                 <h3>Adjunct Instructor (Web Development) <b>@</b> Maryville University</h3>
                 <div class="work-data"><span class="duration">4yr+</span> • <span class="work-type">On-site</span> • <span>Ongoing</span></div>
                 <ul class="work-description">
-                    <li>item</li>
-                    <li>item</li>
-                    <li>item</li>
+                    <li data-tech="HTML,CSS,JavaScript">Educating introductory coders in HTML, CSS, and JavaScript</li>
+                    <li>Web design and UX/UI principle education</li>
+                    <li>Figma best practices</li>
+                    <li>Cirriculum design and application</li>
+                    <li>Constructive learning feedback</li>
+                    <li>Mentorship</li>
                 </ul>
             </li>
         </ul>
     </section>
 </main>
 
-
-</section>
+{% include "partials/footer.html" %}

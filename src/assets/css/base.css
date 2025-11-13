@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
 /* To-do: remove unused font weights */
+/* To-do: dark mode that respects user system preference */
 
 
 @theme {
@@ -28,11 +29,20 @@
 }
 
 body {
-    @apply bg-white p-8 grid gap-8 font-sans text-black w-full;
+    @apply bg-white p-8 gap-8 font-sans text-black w-full;
 
-    grid-template-columns: 20% calc(80% - 2rem);
-    grid-template-areas:
-        "sidebar main";
+    @variant xl {
+        @apply grid;
+        grid-template-columns: 25% calc(75% - 2rem);
+        grid-template-rows: auto;
+        grid-template-areas:
+            "sidebar main";
+    }
+
+    @variant 2xl {
+        @apply grid;
+        grid-template-columns: 20% calc(80% - 2rem);
+    }
 }
 
 .sidebar-column {
@@ -48,7 +58,11 @@ main {
 }
 
 .box {
-    @apply border-2 border-black-tint p-8;
+    @apply border-2 border-black-tint p-6;
+
+    @variant md {
+        @apply p-8;
+    }
 
     & + .box {
         @apply mt-8;

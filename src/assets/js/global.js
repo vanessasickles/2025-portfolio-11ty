@@ -1,6 +1,8 @@
 import { annotate, annotationGroup } from 'rough-notation';
 
 // to-do: enable pre-annotated items via query string
+// to-do: disable effects for motion reduced users, replace with normal hovers in CSS
+// to-do: extract highlighting logic into a function to DRY add it to focus & active states
 
 function classify(string) {
     return string.replace(/[., ]/g, '-').toLowerCase() 
