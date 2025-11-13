@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.html
+layout: layouts/post.html
 pageTitle: Domain Search UX and API Implementation
 tags: project
 githubUrl: url

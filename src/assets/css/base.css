@@ -6,6 +6,7 @@
 
 @theme {
     --color-blue: #0e75c1;
+    --color-blue-tint: #BDE4FF;
     --color-white: #f7faee;
     --color-black: #1d3557;
     --color-black-tint: #90939A;
@@ -13,19 +14,6 @@
     --font-sans: "Merriweather Sans", sans-serif;
 
     --default-transition-duration: 0.15s;
-}
-
-@layer components {
-    /* .btn-primary {
-        @apply inline-block relative border-blue text-white font-semibold hover:text-dark border-1 border-solid px-6 py-2 motion-safe:transition bg-no-repeat;
-        background-size: 0% 100%;
-        background-image: linear-gradient(var(--color-blue));
-        transition: background 0.25s, color 0.15s;
-
-        &:hover {
-            background-size: 100% 100%;
-        }
-    } */
 }
 
 body {
@@ -42,6 +30,12 @@ body {
     @variant 2xl {
         @apply grid;
         grid-template-columns: 20% calc(80% - 2rem);
+    }
+
+    &.post {
+        @variant xl {
+            grid-template-columns: 30% calc(70% - 2rem);
+        }
     }
 }
 
@@ -69,30 +63,84 @@ main {
     }
 }
 
-.icon {
-    @apply w-8 h-8;
-
-    path {
-        @apply !fill-black transition;
-    }
-}
-
 b {
     @apply text-blue font-black;
 }
 
-a {
-    @apply transition;
+button.linkout {
+    @apply flex items-center relative !ml-0 pl-2 pr-3 py-1 mx-1 gap-x-1.5 bg-blue-tint border-blue border-1 rounded lowercase cursor-pointer font-semibold transition;
 
     &:hover {
-        @apply text-blue transition;
+        @apply bg-blue text-blue-tint transition;
 
         .icon path {
-            @apply !fill-blue transition;
+            @apply fill-blue-tint transition;
+        }
+    }
+
+    .icon {
+        @apply h-5 transition;
+
+        path {
+            @apply fill-black transition;
         }
     }
 }
 
-h2 {
-    @apply text-4xl font-black lowercase;
+.content {
+    h1, h2, h3, h4, h5, h6 {
+        @apply mt-6 mb-1;
+    }
+
+    h1, h2, h3 {
+        @apply font-black lowercase;
+    }
+
+    h4, h5, h6 {
+        @apply font-bold;
+    }
+
+    h1 {
+        @apply text-5xl;
+    }
+
+    h2 {
+        @apply text-4xl;
+    }
+
+    h3 {
+        @apply text-3xl;
+    }
+
+    h4 {
+        @apply text-2xl;
+    }
+
+    h5 {
+        @apply text-xl;
+    }
+
+    h6 {
+        @apply text-lg;
+    }
+
+    p {
+        @apply mb-2;
+    }
+
+    ul {
+        @apply list-disc pl-5;
+
+        li {
+            @apply mb-1;
+        }
+    }
+
+    strong {
+        @apply font-black text-blue;
+    }
+
+    code {
+        @apply inline-block py-0 px-2 mx-1 bg-blue-tint border-blue border-1 rounded;
+    }
 }

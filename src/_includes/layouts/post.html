@@ -1,0 +1,29 @@
+---
+layout: layouts/base.html
+style: post
+---
+<div class="sidebar-column">
+    <a href="/" class="text-xl inline-block mb-6">
+        back to <span class="font-black"><span class="text-blue">vs</span>.dev</span>
+    </a>
+
+    <h1>{{ fullTitle }}</h1>
+    <div class="mt-4">
+        <p class="mb-4">{{ blurb }}</p>
+        <button class="linkout">{% icon "github" %} See the code on GitHub</button>
+    </div>
+
+    <div class="technologies-used mt-8">
+        <h2 class="mt-8 mb-2">Created with...</h2>
+        <div class="box">
+            <ul>
+            {%- for item in tech -%}
+                <li>{{ item }}</li>
+            {%- endfor -%}
+            </ul>
+        </div>
+    </div>
+</div>
+<main class="content">
+    {{ content }}
+</main>

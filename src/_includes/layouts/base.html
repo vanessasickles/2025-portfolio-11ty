@@ -1,6 +1,7 @@
 ---
 title: Vanessa Sickles
 pageTitle: Portfolio
+style: index
 ---
 
 <!DOCTYPE html>
@@ -9,9 +10,9 @@ pageTitle: Portfolio
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - {{ pageTitle }}</title>
-    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/{{ style }}.css">
 </head>
-<body>
+<body class="{{ style }}">
     {{ content }}
     <script src="/assets/js/global.js" type="module"></script>
 </body>

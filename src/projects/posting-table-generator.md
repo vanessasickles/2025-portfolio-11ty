@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.html
+layout: layouts/post.html
 pageTitle: Posting Table Generator
 tags: project
 githubUrl: url

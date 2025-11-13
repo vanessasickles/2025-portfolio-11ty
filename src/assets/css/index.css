@@ -57,3 +57,7 @@
         @apply flex gap-2 flex-wrap lowercase;
     }
 }
+
+h2 {
+    @apply text-4xl font-black lowercase;
+}

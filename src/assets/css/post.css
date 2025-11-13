@@ -1,0 +1,27 @@
+@import "./base.css";
+
+h1 {
+    @apply text-6xl font-black lowercase;
+}
+
+h2 {
+    @apply text-5xl font-black lowercase;
+}
+
+.technologies-used {
+    li {
+        @apply text-5xl font-black lowercase cursor-pointer relative text-left;
+
+        @variant xl {
+            @apply text-4xl;
+        }
+
+        @variant 2xl {
+            @apply text-5xl;
+        }
+
+        &:hover {
+            @apply text-blue;
+        }
+    }
+}
