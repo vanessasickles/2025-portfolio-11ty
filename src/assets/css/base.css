@@ -17,24 +17,21 @@
 }
 
 body {
-    @apply bg-white p-8 gap-8 font-sans text-black w-full;
+    @apply bg-white p-8 font-sans text-black w-full;
 
-    @variant xl {
-        @apply grid;
-        grid-template-columns: 25% calc(75% - 2rem);
-        grid-template-rows: auto;
-        grid-template-areas:
-            "sidebar main";
-    }
+    &.index {
+        @apply gap-8;
 
-    @variant 2xl {
-        @apply grid;
-        grid-template-columns: 20% calc(80% - 2rem);
-    }
-
-    &.post {
         @variant xl {
-            grid-template-columns: 30% calc(70% - 2rem);
+            @apply grid;
+            grid-template-columns: 25% calc(75% - 2rem);
+            grid-template-rows: auto;
+            grid-template-areas:
+                "sidebar main";
+        }
+
+        @variant 2xl {
+            grid-template-columns: 20% calc(80% - 2rem);
         }
     }
 }
@@ -67,8 +64,8 @@ b {
     @apply text-blue font-black;
 }
 
-button.linkout {
-    @apply flex items-center relative !ml-0 pl-2 pr-3 py-1 mx-1 gap-x-1.5 bg-blue-tint border-blue border-1 rounded lowercase cursor-pointer font-semibold transition;
+.linkout {
+    @apply inline-flex items-center relative !ml-0 pl-2 pr-3 py-1 mx-1 gap-x-1.5 bg-blue-tint border-blue border-1 rounded lowercase cursor-pointer font-semibold transition;
 
     &:hover {
         @apply bg-blue text-blue-tint transition;
@@ -88,6 +85,8 @@ button.linkout {
 }
 
 .content {
+    @apply leading-relaxed text-lg;
+
     h1, h2, h3, h4, h5, h6 {
         @apply mt-6 mb-1;
     }
@@ -125,14 +124,14 @@ button.linkout {
     }
 
     p {
-        @apply mb-2;
+        @apply mb-4;
     }
 
     ul {
-        @apply list-disc pl-5;
+        @apply list-disc pl-5 mb-4;
 
         li {
-            @apply mb-1;
+            @apply mb-2;
         }
     }
 

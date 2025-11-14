@@ -9,8 +9,8 @@ style: post
 
     <h1>{{ fullTitle }}</h1>
     <div class="mt-4">
-        <p class="mb-4">{{ blurb }}</p>
-        <button class="linkout">{% icon "github" %} See the code on GitHub</button>
+        <p class="mb-4 text-lg">{{ blurb }}</p>
+        <a href="{{ githubUrl }}" class="linkout" target="_blank">{% icon "github" %} See the code on GitHub</a>
     </div>
 
     <div class="technologies-used mt-8">
@@ -27,3 +27,6 @@ style: post
 <main class="content">
     {{ content }}
 </main>
+<aside class="table-of-contents">
+    toc
+</aside>

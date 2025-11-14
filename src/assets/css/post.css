@@ -1,5 +1,29 @@
 @import "./base.css";
 
+body.post {
+    @apply gap-8 m-auto;
+    max-width: 800px;
+
+    @variant xl {
+        @apply grid max-w-full;
+        grid-template-columns: calc(45% - 2rem) calc(55% - 2rem);
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "sidebar toc toc"
+            "sidebar main main";
+    }
+
+    @variant 2xl {
+        grid-template-columns: 30% minmax(calc(40% - 2rem), 800px) calc(30% - 2rem);
+        grid-template-areas:
+                "sidebar main toc";
+    }
+}
+
+.table-of-contents {
+    grid-area: toc;
+}
+
 h1 {
     @apply text-6xl font-black lowercase;
 }
@@ -9,8 +33,16 @@ h2 {
 }
 
 .technologies-used {
+    ul {
+        @apply flex flex-wrap gap-x-12 gap-y-2;
+
+        @variant xl {
+            @apply block;
+        }
+    }
+    
     li {
-        @apply text-5xl font-black lowercase cursor-pointer relative text-left;
+        @apply text-5xl font-black lowercase relative text-left;
 
         @variant xl {
             @apply text-4xl;
@@ -18,10 +50,6 @@ h2 {
 
         @variant 2xl {
             @apply text-5xl;
-        }
-
-        &:hover {
-            @apply text-blue;
         }
     }
 }
