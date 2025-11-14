@@ -37,7 +37,6 @@ workplaceElements.forEach(el => {
 // Items to underline on hover
 const hoverSelectors = [
     '#technologies-list button',
-    '.logo',
     '.project .name'
 ]
 const hoverSelectorsString = hoverSelectors.join(",")

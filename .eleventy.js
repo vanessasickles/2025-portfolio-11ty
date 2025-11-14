@@ -7,6 +7,21 @@ import { default as markdownIt } from 'markdown-it';
 import markdownItAnchor from 'markdown-it-anchor';
 import pluginTOC from 'eleventy-plugin-toc'
 
+// Initiliaze the markdown-it parser, and modify the link rules to set target blank
+// @see https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
+const md = markdownIt({ html: true }).use(markdownItAnchor)
+var defaultRender = md.renderer.rules.link_open || function (tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+  // Add a new `target` attribute, or replace the value of the existing one.
+  tokens[idx].attrSet('target', '_blank');
+
+  // Pass the token to the default renderer.
+  return defaultRender(tokens, idx, options, env, self);
+};
+
 export default function (eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
 		viteOptions: {
@@ -30,7 +45,7 @@ export default function (eleventyConfig) {
 	// Automatically add anchor links to headings, and parse the table of contents
 	eleventyConfig.setLibrary(
 		'md',
-		markdownIt().use(markdownItAnchor)
+		md
 	)
 
 	eleventyConfig.addPlugin(pluginTOC, {

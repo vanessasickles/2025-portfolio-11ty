@@ -26,7 +26,7 @@
 
 .project-wrap {
     .name {
-        @apply text-5xl font-black lowercase;
+        @apply text-5xl font-black lowercase relative;
     }
 
     .tech-used {

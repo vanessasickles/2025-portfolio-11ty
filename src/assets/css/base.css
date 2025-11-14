@@ -9,6 +9,7 @@
     --color-white: #f7faee;
     --color-black: #1d3557;
     --color-black-tint: #90939A;
+    --color-highlight: #ffe8a1;
 
     --font-sans: "Merriweather Sans", sans-serif;
 
@@ -16,11 +17,11 @@
 }
 
 @utility standard-link {
-    @apply text-black transition relative inline-block;
+    @apply text-blue transition relative inline underline;
 
     &:hover,
     &:focus {
-        @apply text-blue transition;
+        @apply transition;
     }
 }
 
@@ -104,11 +105,11 @@ b {
     @apply leading-relaxed text-lg;
 
     h1, h2, h3, h4, h5, h6 {
-        @apply mt-6 mb-1;
+        @apply mt-8 mb-2;
     }
 
     h1, h2, h3 {
-        @apply font-black lowercase;
+        @apply mt-8 font-black lowercase;
     }
 
     h4, h5, h6 {
@@ -116,11 +117,16 @@ b {
     }
 
     h2 {
-        @apply text-5xl;
+        @apply pb-1 mt-16 mb-6 text-5xl relative z-1;
     }
 
     h3 {
         @apply text-4xl;
+
+        &::before {
+            @apply text-blue mr-2;
+            content: '>';
+        }
     }
 
     h4 {
@@ -157,5 +163,17 @@ b {
 
     code {
         @apply inline-block py-0 px-2 mx-1 bg-blue-tint border-blue border-1 rounded;
+    }
+
+    figure {
+        @apply my-6;
+
+        img {
+            @apply border-black-tint border-2;
+        }
+
+        figcaption {
+            @apply text-base text-center mt-4 italic;
+        }
     }
 }
