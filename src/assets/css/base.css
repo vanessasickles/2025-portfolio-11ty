@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
 /* To-do: remove unused font weights */
 /* To-do: dark mode that respects user system preference */
@@ -16,6 +15,15 @@
     --default-transition-duration: 0.15s;
 }
 
+@utility standard-link {
+    @apply text-black transition relative inline-block;
+
+    &:hover,
+    &:focus {
+        @apply text-blue transition;
+    }
+}
+
 body {
     @apply bg-white p-8 font-sans text-black w-full;
 
@@ -25,7 +33,7 @@ body {
         @variant xl {
             @apply grid;
             grid-template-columns: 25% calc(75% - 2rem);
-            grid-template-rows: auto;
+            grid-auto-rows: min-content;
             grid-template-areas:
                 "sidebar main";
         }
@@ -38,6 +46,10 @@ body {
 
 .sidebar-column {
     grid-area: sidebar;
+
+    @variant xl {
+        @apply sticky top-8 h-min;
+    }
 }
 
 main {
@@ -62,6 +74,10 @@ main {
 
 b {
     @apply text-blue font-black;
+}
+
+.icon {
+    @apply w-6 h-6;
 }
 
 .linkout {
@@ -99,28 +115,28 @@ b {
         @apply font-bold;
     }
 
-    h1 {
+    h2 {
         @apply text-5xl;
     }
 
-    h2 {
+    h3 {
         @apply text-4xl;
     }
 
-    h3 {
+    h4 {
         @apply text-3xl;
     }
 
-    h4 {
+    h5 {
         @apply text-2xl;
     }
 
-    h5 {
+    h6 {
         @apply text-xl;
     }
 
-    h6 {
-        @apply text-lg;
+    a {
+        @apply standard-link;
     }
 
     p {

@@ -3,6 +3,10 @@ import EleventyVitePlugin from '@11ty/eleventy-plugin-vite';
 import pluginIcons from 'eleventy-plugin-icons';
 import tailwindcss from '@tailwindcss/vite';
 
+import { default as markdownIt } from 'markdown-it';
+import markdownItAnchor from 'markdown-it-anchor';
+import pluginTOC from 'eleventy-plugin-toc'
+
 export default function (eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
 		viteOptions: {
@@ -22,6 +26,18 @@ export default function (eleventyConfig) {
 	});
 
 	eleventyConfig.addPassthroughCopy('src/assets');
+
+	// Automatically add anchor links to headings, and parse the table of contents
+	eleventyConfig.setLibrary(
+		'md',
+		markdownIt().use(markdownItAnchor)
+	)
+
+	eleventyConfig.addPlugin(pluginTOC, {
+		tags: ['h2', 'h3', 'h4'],
+		wrapper: 'div',
+		wrapperClass: 'table-of-contents'
+	})
 
 	function classify(string) {
 		return string.replace(/[., ]/g, '-').toLowerCase() 

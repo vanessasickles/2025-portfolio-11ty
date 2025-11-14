@@ -2,11 +2,15 @@
 title: Vanessa Sickles
 pageTitle: Portfolio
 style: index
+script: index
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - {{ pageTitle }}</title>
@@ -14,6 +18,8 @@ style: index
 </head>
 <body class="{{ style }}">
     {{ content }}
-    <script src="/assets/js/global.js" type="module"></script>
+    {% if script %}
+        <script src="/assets/js/{{ script }}.js" type="module"></script>
+    {% endif %}
 </body>
 </html>

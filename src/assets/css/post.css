@@ -7,7 +7,7 @@ body.post {
     @variant xl {
         @apply grid max-w-full;
         grid-template-columns: calc(45% - 2rem) calc(55% - 2rem);
-        grid-template-rows: auto auto;
+        grid-auto-rows: min-content;
         grid-template-areas:
             "sidebar toc toc"
             "sidebar main main";
@@ -20,8 +20,43 @@ body.post {
     }
 }
 
-.table-of-contents {
+.table-of-contents-column {
+    @apply my-12 lowercase;
     grid-area: toc;
+
+    @variant xl {
+        @apply mt-6 sticky top-14 h-min;
+    }
+
+    ol {
+        @apply pl-4;
+    }
+
+    a {
+        @apply standard-link;
+    }
+
+    .box {
+        @apply py-6;
+    }
+
+    .table-of-contents > ol {
+        @apply text-2xl font-bold leading-relaxed;
+        list-style-type: upper-roman;
+
+        > li:not(:last-of-type) {
+            @apply mb-2;
+        }
+
+        ol {
+            @apply pl-12 text-xl font-normal;
+            list-style-type: lower-roman;
+
+            li {
+                @apply mb-1;
+            }
+        }
+    }
 }
 
 h1 {

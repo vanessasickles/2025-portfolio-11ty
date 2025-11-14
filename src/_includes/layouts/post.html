@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.html
 style: post
+script: post
 ---
 <div class="sidebar-column">
     <a href="/" class="text-xl inline-block mb-6">
@@ -24,9 +25,12 @@ style: post
         </div>
     </div>
 </div>
+<aside class="table-of-contents-column">
+    <h2>Jump to...</h2>
+    <div class="box mt-2">
+        {{ content | toc }}
+    </div>
+</aside>
 <main class="content">
     {{ content }}
 </main>
-<aside class="table-of-contents">
-    toc
-</aside>

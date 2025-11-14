@@ -46,12 +46,12 @@ const defaultUnderlineSettings = { type: 'underline', color: 'var(--color-blue)'
 const defaultBoxSettings = { type: 'box', color: 'var(--color-blue)', animationDuration: 700, strokeWidth: 6, padding: 16 }
 
 elementsToAnimateOnhover.forEach(el => {
+    const annotation = annotate(el, defaultUnderlineSettings)
     el.addEventListener('mouseenter', () => {
-        const annotation = annotate(el, defaultUnderlineSettings)
         annotation.show()
 
         el.addEventListener('mouseleave', () => {
-            annotation.remove()
+            annotation.hide()
         })
 
         // light up projects with this data tag
