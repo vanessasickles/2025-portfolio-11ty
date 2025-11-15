@@ -60,11 +60,11 @@ body.post {
 }
 
 h1 {
-    @apply text-6xl font-black lowercase;
+    @apply text-6xl box-header;
 }
 
 h2 {
-    @apply text-5xl font-black lowercase;
+    @apply text-5xl box-header;
 }
 
 .technologies-used {

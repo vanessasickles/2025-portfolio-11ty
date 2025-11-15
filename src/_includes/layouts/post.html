@@ -4,17 +4,25 @@ style: post
 script: post
 ---
 <div class="sidebar-column">
-    <a href="/" class="text-xl inline-block mb-6">
-        back to <span class="font-black"><span class="text-blue">vanessasickles</span>.dev</span>
+    <a href="/" class="text-xl inline-block mb-6 dark:text-white dark:hover:text-white">
+        back to <span class="font-black"><span class="text-blue dark:text-dark-blue">vanessasickles</span>.dev</span>
     </a>
+    <a class="linkout skiplink" href="#tech-used">Skip to tech used for this project</a>
+    <a class="linkout skiplink" href="#toc">Skip to table of contents for this project</a>
+    <a class="linkout skiplink" href="#main-content">Skip to main content</a>
 
     <h1>{{ fullTitle }}</h1>
     <div class="mt-4">
         <p class="mb-4 text-lg">{{ blurb }}</p>
-        <a href="{{ githubUrl }}" class="linkout" target="_blank">{% icon "github" %} See the code on GitHub</a>
+        {% if githubUrl %}
+            <a href="{{ githubUrl }}" class="linkout" target="_blank">{% icon "github" %} See the code on GitHub</a>
+        {% endif %}
+        {% if liveUrl %}
+            <a href="{{ liveUrl }}" class="linkout" target="_blank">Check this project out live!</a>
+        {% endif %}
     </div>
 
-    <div class="technologies-used mt-8">
+    <div id="tech-used" class="technologies-used mt-8">
         <h2 class="mt-8 mb-2">Created with...</h2>
         <div class="box">
             <ul>
@@ -25,12 +33,13 @@ script: post
         </div>
     </div>
 </div>
-<aside class="table-of-contents-column">
+<a class="linkout skiplink" href="#main-content">Skip the table of contents and go to main content</a>
+<aside id="toc" class="table-of-contents-column">
     <h2>Jump to...</h2>
     <div class="box mt-2">
         {{ content | toc }}
     </div>
 </aside>
-<main class="content">
+<main id="main-content" class="content">
     {{ content }}
 </main>

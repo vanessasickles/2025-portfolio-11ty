@@ -4,12 +4,14 @@
 
 
 @theme {
+    --color-dark-blue: #1eb4ff;
     --color-blue: #0e75c1;
     --color-blue-tint: #BDE4FF;
     --color-white: #f7faee;
     --color-black: #1d3557;
     --color-black-tint: #90939A;
     --color-highlight: #ffe8a1;
+    --color-dark-highlight: #665d0d;
 
     --font-sans: "Merriweather Sans", sans-serif;
 
@@ -17,16 +19,20 @@
 }
 
 @utility standard-link {
-    @apply text-blue transition relative inline underline;
+    @apply text-blue dark:text-dark-blue transition relative inline underline;
 
     &:hover,
     &:focus {
-        @apply transition;
+        @apply dark:text-white transition;
     }
 }
 
+@utility box-header {
+    @apply text-4xl font-black lowercase dark:text-white;
+}
+
 body {
-    @apply bg-white p-8 font-sans text-black w-full;
+    @apply bg-white p-8 font-sans text-black w-full dark:bg-black dark:text-blue-tint;
 
     &.index {
         @apply gap-8;
@@ -62,7 +68,7 @@ main {
 }
 
 .box {
-    @apply border-2 border-black-tint p-6;
+    @apply border-2 border-black-tint dark:border-blue-tint p-6;
 
     @variant md {
         @apply p-8;
@@ -74,7 +80,7 @@ main {
 }
 
 b {
-    @apply text-blue font-black;
+    @apply text-blue dark:text-dark-blue font-black;
 }
 
 .icon {
@@ -82,13 +88,13 @@ b {
 }
 
 .linkout {
-    @apply inline-flex items-center relative !ml-0 pl-2 pr-3 py-1 mx-1 gap-x-1.5 bg-blue-tint border-blue border-1 rounded lowercase cursor-pointer font-semibold transition;
+    @apply inline-flex items-center relative !ml-0 pl-2 pr-3 py-1 mx-1 gap-x-1.5 bg-blue-tint border-blue text-black dark:bg-white border-1 rounded lowercase cursor-pointer font-semibold transition;
 
     &:hover {
-        @apply bg-blue text-blue-tint transition;
+        @apply bg-blue text-white transition;
 
         .icon path {
-            @apply fill-blue-tint transition;
+            @apply fill-white transition;
         }
     }
 
@@ -109,11 +115,11 @@ b {
     }
 
     h1, h2, h3 {
-        @apply mt-8 font-black lowercase;
+        @apply mt-8 font-black lowercase text-white;
     }
 
     h4, h5, h6 {
-        @apply font-bold;
+        @apply font-bold text-blue-tint;
     }
 
     h2 {
@@ -124,7 +130,7 @@ b {
         @apply text-4xl;
 
         &::before {
-            @apply text-blue mr-2;
+            @apply text-blue dark:text-dark-blue mr-2;
             content: '>';
         }
     }
@@ -158,11 +164,11 @@ b {
     }
 
     strong {
-        @apply font-black text-blue;
+        @apply font-black text-blue dark:text-dark-blue;
     }
 
     code {
-        @apply inline-block py-0 px-2 mx-1 bg-blue-tint border-blue border-1 rounded;
+        @apply inline-block py-0 px-2 mx-1 bg-blue-tint border-blue dark:text-black border-1 rounded;
     }
 
     figure {
@@ -175,5 +181,14 @@ b {
         figcaption {
             @apply text-base text-center mt-4 italic;
         }
+    }
+}
+
+.skiplink {
+    @apply absolute top-4 w-0.5 h-0.5 z-1 overflow-hidden text-2xl;
+    left: -10000px;
+
+    &:focus {
+        @apply absolute left-4 w-auto h-auto;
     }
 }
