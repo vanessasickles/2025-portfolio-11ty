@@ -6,6 +6,7 @@
 	},
 	"dependencies": {
 		"@11ty/eleventy": "^3.0.0",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
 		"@11ty/eleventy-plugin-vite": "^6.0.0",
 		"@tailwindcss/vite": "^4.0.11",
 		"eleventy-plugin-icons": "^4.5.4",

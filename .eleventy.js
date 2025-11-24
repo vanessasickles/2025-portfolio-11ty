@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { default as markdownIt } from 'markdown-it';
 import markdownItAnchor from 'markdown-it-anchor';
 import pluginTOC from 'eleventy-plugin-toc'
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
 // Initiliaze the markdown-it parser, and modify the link rules to set target blank
 // @see https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
@@ -27,7 +28,7 @@ export default function (eleventyConfig) {
 		viteOptions: {
 			plugins: ['tailwindcss/nesting', tailwindcss()],
 		},
-	});
+	})
 	eleventyConfig.addPlugin(pluginIcons, {
 		mode: 'inline',
 		sources: [
@@ -38,7 +39,8 @@ export default function (eleventyConfig) {
 				class: (name, source) => `icon icon-${name}`,
 			}
 		]
-	});
+	})
+	eleventyConfig.addPlugin(syntaxHighlight)
 
 	eleventyConfig.addPassthroughCopy('src/assets');
 
@@ -67,6 +69,8 @@ export default function (eleventyConfig) {
 	eleventyConfig.addLiquidFilter("arrayCommaJoin", function(array) {
 		return array.join(",")
 	})
+
+	eleventyConfig.addFilter('markdownify', (markdownString) => md.render(markdownString))
 
 	return {
 		dir: {

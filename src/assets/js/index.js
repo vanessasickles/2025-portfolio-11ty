@@ -4,6 +4,7 @@ import { annotate, annotationGroup } from 'rough-notation';
 // to-do: disable effects for motion reduced users, replace with normal hovers in CSS
 // to-do: extract highlighting logic into a function to DRY add it to focus & active states
 
+const prefersReducedMotion = window && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 const annotationColorByTheme = {
     light: 'var(--color-blue)',
     dark: 'var(--color-dark-blue)'
@@ -47,8 +48,8 @@ const hoverSelectors = [
 ]
 const hoverSelectorsString = hoverSelectors.join(",")
 const elementsToAnimateOnhover = document.querySelectorAll(hoverSelectorsString)
-const defaultUnderlineSettings = { type: 'underline', color: annotationColor, animationDuration: 250, strokeWidth: 6, padding: 0 }
-const defaultBoxSettings = { type: 'box', color: annotationColor, animationDuration: 700, strokeWidth: 6, padding: 16 }
+const defaultUnderlineSettings = { type: 'underline', color: annotationColor, animationDuration: 250, strokeWidth: 6, padding: 0, animate: !prefersReducedMotion }
+const defaultBoxSettings = { type: 'box', color: annotationColor, animationDuration: 700, strokeWidth: 6, padding: 16, animate: !prefersReducedMotion }
 
 elementsToAnimateOnhover.forEach(el => {
     const annotation = annotate(el, defaultUnderlineSettings)

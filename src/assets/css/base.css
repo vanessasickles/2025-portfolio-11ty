@@ -1,6 +1,5 @@
 @import "tailwindcss";
 /* To-do: remove unused font weights */
-/* To-do: dark mode that respects user system preference */
 
 
 @theme {
@@ -29,6 +28,10 @@
 
 @utility box-header {
     @apply text-4xl font-black lowercase dark:text-white;
+}
+
+html {
+    @apply scroll-smooth scroll-p-8;
 }
 
 body {
@@ -167,8 +170,12 @@ b {
         @apply font-black text-blue dark:text-dark-blue;
     }
 
-    code {
+    code:not(pre code) {
         @apply inline-block py-0 px-2 mx-1 bg-blue-tint border-blue dark:text-black border-1 rounded;
+    }
+
+    pre:has(code) {
+        @apply mb-8;
     }
 
     figure {

@@ -12,6 +12,8 @@ tech:
 - TailwindCSS
 - JavaScript
 - Git
+- HTML
+- CSS
 ---
 
 ## Features
@@ -52,7 +54,7 @@ Tailwind's bundled `tailwindcss/nesting` plugin has `postcss-nested` built in, w
 
 Now, you might notice that unlike a normal Tailwind site, the markup is still fairly readable. This is because I use [Tailwind's `@apply` syntax](https://tailwindcss.com/docs/functions-and-directives#apply-directive) to apply their utility classes in the site's CSS files rather than adding them inline. This keeps the DOM fairly clean and readable, while letting me iterate insanely fast with minimal keystrokes in my CSS file.
 
-Yes, I know that some years ago, this was considered [a deeply-regretted and anti-pattern by the creator of Tailwind](https://x.com/adamwathan/status/1559250403547652097). There's a variety of pros and cons to inline utility classes, and I am happy to use them inline for any project with more granular templating that enables my code to remain DRY. But for my purposes, I highly value readability in my markup for my personal projects, and once you get to more than a few utility classes, the markup becomes difficult to read and modify in a template. It pulls you out of a flow state to slow down and figure out which element you're looking at, which for more complicated layouts, can become quite overwhelming. So I like using `@apply`. Thanks, Adam. Sorry about your hundreds of thousands of dollars, Adam.
+Yes, I know that some years ago, this was considered [a deeply-regretted anti-pattern by the creator of Tailwind](https://x.com/adamwathan/status/1559250403547652097). There's a variety of pros and cons to inline utility classes, and I am happy to use them inline for any project with more granular templating that enables my code to remain DRY. But for my purposes, I highly value readability in my markup for my personal projects, and once you get to more than a few utility classes, the markup becomes difficult to read and modify in a template. It pulls you out of a flow state to slow down and figure out which element you're looking at, which for more complicated layouts, can become quite overwhelming. So I like using `@apply`. Thanks, Adam. Sorry about your hundreds of thousands of dollars, Adam.
 
 Anyway. That aside! I like Tailwind. So I used Tailwind!
 

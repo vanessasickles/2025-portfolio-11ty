@@ -13,12 +13,18 @@ script: post
 
     <h1>{{ fullTitle }}</h1>
     <div class="mt-4">
-        <p class="mb-4 text-lg">{{ blurb }}</p>
-        {% if githubUrl %}
-            <a href="{{ githubUrl }}" class="linkout" target="_blank">{% icon "github" %} See the code on GitHub</a>
-        {% endif %}
-        {% if liveUrl %}
-            <a href="{{ liveUrl }}" class="linkout" target="_blank">Check this project out live!</a>
+        <div class="mb-4 text-lg content">
+            {{ blurb | markdownify }}
+        </div>
+        {% if githubUrl or liveUrl %}
+            <div class="flex flex-wrap items-center gap-2">
+                {% if githubUrl %}
+                    <a href="{{ githubUrl }}" class="linkout" target="_blank">{% icon "github" %} See the code on GitHub</a>
+                {% endif %}
+                {% if liveUrl %}
+                    <a href="{{ liveUrl }}" class="linkout" target="_blank">Check this project out live!</a>
+                {% endif %}
+            </div>
         {% endif %}
     </div>
 
