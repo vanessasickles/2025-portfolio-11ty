@@ -20,6 +20,17 @@ layout: layouts/base.html
                             <li class="{{ tech }}">{{ tech }}</li>
                         {%- endfor -%}
                     </ul>
+
+                    {% if project.data.githubUrl or project.data.liveUrl %}
+                        <div class="links flex flex-wrap items-center gap-2">
+                            {% if project.data.githubUrl %}
+                                <a href="{{ project.data.githubUrl }}" class="linkout" target="_blank">{% icon "github" %} Code</a>
+                            {% endif %}
+                            {% if project.data.liveUrl %}
+                                <a href="{{ project.data.liveUrl }}" class="linkout" target="_blank">{% icon "external" %} Live demo</a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
                 </article>
             </div>
             {%- endfor -%}

@@ -18,10 +18,10 @@ tech:
 
 ## Features
 - Static 11ty site deployed with Netlify
-- Site fully responsive on all devices
-- Dark and light themes that respect your device's `prefer-color-scheme` setting
-- Dynamic JavaScript highlighting of projects and experiences that uses hovered tech
-- A focus on accessibility, including focus effects, skipnav links, and intuitive content ordering
+- Site **fully responsive** on all devices
+- **Dark and light themes** that respect your device's `prefer-color-scheme` setting
+- Dynamic **JavaScript highlighting of projects and experiences** that uses hovered tech
+- **A focus on accessibility,** including focus effects, skipnav links, and intuitive content ordering
 - ...and more!
 
 ## Choosing the right tech
@@ -63,14 +63,14 @@ My design and agency background instilled a very ritualistic process for project
 
 That's exactly what happened with this project. It's easy for me to design and build for everyone else -- they have branding, they have a style, and I just need to **create the best user experience I can that matches their brand**. But what represents *me?* That's a harder question for me to answer.
 
-In more recent years, to get "unstuck", I've just started building. Building gets me into the flow, rewarding me with exciting challenges to solve right off the bat, and if I need to go back to the drawing board for anything, I can. It also lets me get a feeling for how my scope will creep and what I want to build for fun in the future that I might need to visually plan for. So I just started building instead. I got 11ty set up, got my lightning-fast build system figured out, and scaffolded my base CSS the way I like. All was well!
+In more recent years, to get "unstuck", **I've just started building**. Building gets me into the flow, rewarding me with exciting challenges to solve right off the bat, and if I need to go back to the drawing board for anything, I can. It also lets me get a feeling for how my scope will creep and what I want to build for fun in the future that I might need to visually plan for. So I just started building instead. I got 11ty set up, got my lightning-fast build system figured out, and scaffolded my base CSS the way I like. All was well!
 
 ### The issue with winging it
 **But this methodology came with another problem.** I wanted something new, but without anything planned, I started falling back into old patterns and old designs. Standard floating top navigation, centered content container, "Hi, I'm Vanessa" banner, skills section, projects section, contact. And it just felt-- boring. Just so, so lame. Intro banners always feel so awkward on a site where you're not totally sure who you're talking to. Of course, I'm building this to appeal to potential employers, but everyone has their individual vibes and if they're landing on my website, it's going to be from a place they already know my name and my summary (LinkedIn, resume, application). Is it really worth it to re-iterate so verbosely?
 
 From there, **I started asking more questions.** Do I really need a whole navigation bar for what's basically a Single Page Application? Is that a good use of screen real-estate? Who does that serve? Who finds it fun or useful when a navigation item is just an anchor link to something you've already read instead of taking you to a new page with more info? I certainly don't.
 
-So I went back to the drawing board. I looked at other portfolios for examples, and saw much of the format I was tired of repeated over and over. A part of me wondered if maybe there was a reason for that. What if this convention exists because it's a working strategy? Anecdotally, many of the portfolios that I saw in this layout belonged to either student, introductory, or freelance developers. Even as I looked through them, they all blended together; despite their names being front-and-center, I couldn't remember any that stuck out to me. The ones I *did* remember were the ones that broke out of this mold, not the ones that fit into it. So this gave me the confidence I needed to break out of this observed convention and into trying something new.
+So I went back to the drawing board. I looked at other portfolios for examples, and saw much of the format I was tired of repeated over and over. A part of me wondered if maybe there was a reason for that. What if this convention exists because it's a working strategy? Anecdotally, many of the portfolios that I saw in this layout belonged to either student, introductory, or freelance developers. Even as I looked through them, they all blended together; despite their names being front-and-center, I couldn't remember any that stuck out to me. The ones I *did* remember were the ones that broke out of this mold, not the ones that fit into it. So this gave me the confidence I needed to **break out of this observed convention and into trying something new.**
 
 ### Asking the right questions
 As always in design, content is king and less is more. So what if I started with the **bare minimum** that I needed and built up from there? This is how the typographical theme came about.
@@ -85,9 +85,9 @@ I thought about what potential employers would look for right off the bat: my te
 
 As a software developer with a love for frontend and a passion for accessibility, I want to make sure that my site is **responsive, accessible, and easy to use.** The site is responsive on all devices, respects your device's light & dark settings, as well as your reduced motion settings. For some flair, I used JavaScript to implement the lovely [Rough Notation](https://github.com/rough-stuff/rough-notation) package for hover effects, giving some playful variety to the otherwise geometric and rigid design.
 
-Then, finally, I want employers to see my work, and then hopefully contact me. To help with this, I figured I could keep my LinkedIn present at all times in the left sidebar. While this started as an icon in my original design, I later expanded this to a more clear action item button in order to reduce friction.
+Then, finally, **I want employers to see my work**, and then hopefully contact me. To help with this, I figured I could keep my LinkedIn present at all times in the left sidebar. While this started as an icon in my original design, I later expanded this to a more clear action item button in order to reduce friction.
 
-With all of this in mind, this time I mocked up a very rough wireframe in Figma. Since this was the equivalent of jotting something down in a sketchbook, I didn't worry about character styles, exact measurements, or even accessible colors; I just slapped things down willy-nilly to get the idea out of my brain and onto a visual.
+With all of this in mind, this time I mocked up a **very rough wireframe in Figma**. Since this was the equivalent of jotting something down in a sketchbook, I didn't worry about character styles, exact measurements, or even accessible colors; I just slapped things down willy-nilly to get the idea out of my brain and onto a visual.
 
 <figure>
   <img src="/assets/images/portfolio-design.png" alt="A screenshot of the Figma design comp for this site">
@@ -100,7 +100,8 @@ First and foremost, **wow, 11ty is fun.** A lot of the limitations I worried tha
 Big shoutouts to the following 11ty community plugins for making it so that I didn't have to reinvent the wheel on some wonderful QOL features:
 - [eleventy-plugin-icons](https://github.com/uncenter/eleventy-plugin-icons) for giving an easy template shortcode to import SVG icons inline into content, as I try to avoid Font Awesome like the plague nowadays for personal projects
 - [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor) for automatically generating anchor links for headings
-- [eleventy-plugin-toc](https://github.com/jdsteinbach/eleventy-plugin-toc) for automatically generating a table of contents based off of those anchored headings, because i'm an absolute sucker for anything that makes it easier to skim the content of a page
+- [eleventy-plugin-toc](https://github.com/jdsteinbach/eleventy-plugin-toc) for automatically generating a table of contents based off of those anchored headings, because I'm an absolute sucker for anything that makes it easier to skim the content of a page
+- [eleventy-plugin-syntaxhighlight](https://github.com/11ty/eleventy-plugin-syntaxhighlight) for syntax highlighting for code blocks, as well as the [prism-duotone-sea theme](https://github.com/PrismJS/prism-themes/blob/master/themes/prism-duotone-sea.css) that I modified to my site's palette.
 
 It was fun to check out v4 of TailwindCSS and see how much the framework has grown. I remember having to edit a several-thousand-line commented file of theme variables in older Tailwind projects, so it was nice to be able to easily override and add utilities with the `@theme` and `@utility` directives.
 

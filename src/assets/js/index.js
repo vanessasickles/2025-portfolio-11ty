@@ -49,7 +49,7 @@ const hoverSelectors = [
 const hoverSelectorsString = hoverSelectors.join(",")
 const elementsToAnimateOnhover = document.querySelectorAll(hoverSelectorsString)
 const defaultUnderlineSettings = { type: 'underline', color: annotationColor, animationDuration: 250, strokeWidth: 6, padding: 0, animate: !prefersReducedMotion }
-const defaultBoxSettings = { type: 'box', color: annotationColor, animationDuration: 700, strokeWidth: 6, padding: 16, animate: !prefersReducedMotion }
+const defaultBoxSettings = { type: 'box', color: annotationColor, animationDuration: 350, strokeWidth: 6, padding: 16, animate: !prefersReducedMotion }
 
 elementsToAnimateOnhover.forEach(el => {
     const annotation = annotate(el, defaultUnderlineSettings)

@@ -96,8 +96,14 @@ b {
     &:hover {
         @apply bg-blue text-white transition;
 
-        .icon path {
-            @apply fill-white transition;
+        .icon {
+            path {
+                @apply fill-white transition;
+            }
+
+            &.icon-external path {
+                @apply fill-transparent stroke-white transition;
+            }
         }
     }
 
@@ -106,6 +112,10 @@ b {
 
         path {
             @apply fill-black transition;
+        }
+
+        &.icon-external path {
+            @apply fill-transparent stroke-black transition;
         }
     }
 }

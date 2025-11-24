@@ -1,13 +1,5 @@
 @import "./base.css";
 
-.intro .links {
-    @apply flex gap-2 mt-4 mb-12;
-
-    path {
-        @apply fill-blue dark:fill-blue-tint;
-    }
-}
-
 #technologies-list {
     @apply flex flex-wrap gap-x-12 gap-y-2;
 
@@ -30,7 +22,7 @@
 
 .project-wrap {
     .name {
-        @apply text-5xl font-black lowercase relative dark:text-white;
+        @apply text-6xl font-black lowercase relative dark:text-white;
     }
 
     .tech-used {
@@ -39,6 +31,10 @@
 
     & + .project-wrap {
         @apply mt-8;
+    }
+
+    .links {
+        @apply mt-2;
     }
 }
 
@@ -64,4 +60,34 @@
 
 h2 {
     @apply box-header;
+}
+
+.linkout {
+    @apply bg-transparent text-black dark:text-white;
+
+    &:hover {
+        @apply bg-blue text-white transition;
+
+        .icon {
+            path {
+                @apply fill-white transition;
+            }
+
+            &.icon-external path {
+                @apply fill-transparent stroke-white transition;
+            }
+        }
+    }
+
+    .icon {
+        @apply h-5 transition;
+
+        path {
+            @apply fill-black dark:fill-white transition;
+        }
+
+        &.icon-external path {
+            @apply fill-transparent stroke-black dark:stroke-white transition;
+        }
+    }
 }

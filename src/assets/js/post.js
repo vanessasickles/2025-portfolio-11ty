@@ -11,7 +11,6 @@ const annotationColorByTypeAndTheme = {
     }
 }
 const prefersReducedMotion = window && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-console.log(prefersReducedMotion)
 const prefersDark = window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 const highlightAnnotationColor = prefersDark ? annotationColorByTypeAndTheme['highlight']['dark'] : annotationColorByTypeAndTheme['highlight']['light']
 const lineAnnotationColor = prefersDark ? annotationColorByTypeAndTheme['line']['dark'] : annotationColorByTypeAndTheme['line']['light']
