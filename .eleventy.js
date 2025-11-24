@@ -43,6 +43,8 @@ export default function (eleventyConfig) {
 	eleventyConfig.addPlugin(syntaxHighlight)
 
 	eleventyConfig.addPassthroughCopy('src/assets');
+	eleventyConfig.addPassthroughCopy('favicon.ico');
+	eleventyConfig.addPassthroughCopy('manifest.webmanifest');
 
 	// Automatically add anchor links to headings, and parse the table of contents
 	eleventyConfig.setLibrary(
