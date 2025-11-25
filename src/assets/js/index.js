@@ -1,7 +1,6 @@
 import { annotate, annotationGroup } from 'rough-notation';
 
 // to-do: enable pre-annotated items via query string
-// to-do: disable effects for motion reduced users, replace with normal hovers in CSS
 // to-do: extract highlighting logic into a function to DRY add it to focus & active states
 
 const prefersReducedMotion = window && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -10,6 +9,16 @@ const annotationColorByTheme = {
     dark: 'var(--color-dark-blue)'
 }
 const annotationColor = (window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? annotationColorByTheme['dark'] : annotationColorByTheme['light']
+
+// Items to underline on hover
+const hoverSelectors = [
+    '#technologies-list button',
+    '.project .name'
+]
+const hoverSelectorsString = hoverSelectors.join(",")
+const elementsToAnimateOnhover = document.querySelectorAll(hoverSelectorsString)
+const defaultUnderlineSettings = { type: 'underline', color: annotationColor, animationDuration: 250, strokeWidth: 6, padding: 0, animate: !prefersReducedMotion, multiline: true }
+const defaultBoxSettings = { type: 'box', color: annotationColor, animationDuration: 350, strokeWidth: 6, padding: 16, animate: !prefersReducedMotion }
 
 function classify(string) {
     return string.replace(/[., ]/g, '-').toLowerCase() 
@@ -23,7 +32,8 @@ projectElements.forEach(el => {
     if (el.dataset.name && el.dataset.tech) {
         projectTechData[el.dataset.name] = {
             element: el,
-            tech: el.dataset.tech.split(',')
+            tech: el.dataset.tech.split(','),
+            annotation: annotate(el, defaultBoxSettings)
         }
     }
 })
@@ -35,21 +45,11 @@ workplaceElements.forEach(el => {
     if (el.dataset.tech) {
         workplaceTechExamples.push({
             element: el,
-            tech: el.dataset.tech.split(',')
+            tech: el.dataset.tech.split(','),
+            annotation: annotate(el, defaultUnderlineSettings)
         })
     }
 })
-
-
-// Items to underline on hover
-const hoverSelectors = [
-    '#technologies-list button',
-    '.project .name'
-]
-const hoverSelectorsString = hoverSelectors.join(",")
-const elementsToAnimateOnhover = document.querySelectorAll(hoverSelectorsString)
-const defaultUnderlineSettings = { type: 'underline', color: annotationColor, animationDuration: 250, strokeWidth: 6, padding: 0, animate: !prefersReducedMotion }
-const defaultBoxSettings = { type: 'box', color: annotationColor, animationDuration: 350, strokeWidth: 6, padding: 16, animate: !prefersReducedMotion }
 
 elementsToAnimateOnhover.forEach(el => {
     const annotation = annotate(el, defaultUnderlineSettings)
@@ -60,7 +60,7 @@ elementsToAnimateOnhover.forEach(el => {
             annotation.hide()
         })
 
-        // light up projects with this data tag
+        // If it's a tech button, light up projects with this data tag
         const isTechnologyButton = el.parentNode.parentNode.getAttribute("id") === 'technologies-list'
         if (isTechnologyButton) {
             const techType = el.innerHTML
@@ -68,31 +68,19 @@ elementsToAnimateOnhover.forEach(el => {
             const allTechExamplesAnnotations = []
 
             // Highlight projects that use this tech
-            for (const projectKey in projectTechData) {
-                const project = projectTechData[projectKey]
-                if (project.tech.includes(techType)) {
-                    // project includes tech; underline it
-                    const projectAnnotation = annotate(project.element, defaultBoxSettings)
-                    // projectAnnotation.show()
-                    allTechExamplesAnnotations.push(projectAnnotation)
-
-                    el.addEventListener('mouseleave', () => {
-                        projectAnnotation.remove()
-                    })
-                }
-            }
+            findAnnotationsForProjectByTechType(projectTechData, techType).forEach(projectAnnotation => {
+                allTechExamplesAnnotations.push(projectAnnotation)
+                el.addEventListener('mouseleave', () => {
+                    projectAnnotation.hide()
+                })
+            })
 
             // Highlight experience example that uses this tech
-            workplaceTechExamples.forEach(workplaceItem => {
-                if (workplaceItem.tech.includes(techType)) {
-                    const workplaceItemAnnotation = annotate(workplaceItem.element, defaultUnderlineSettings)
-                    // workplaceItemAnnotation.show()
-                    allTechExamplesAnnotations.push(workplaceItemAnnotation)
-
-                    el.addEventListener('mouseleave', () => {
-                        workplaceItemAnnotation.remove()
-                    })
-                }
+            findWorkplaceTechAnnotationsByTechType(workplaceTechExamples, techType).forEach(techAnnotation => {
+                allTechExamplesAnnotations.push(techAnnotation)
+                el.addEventListener('mouseleave', () => {
+                    techAnnotation.hide()
+                })
             })
 
             const techAnnotationGroup = annotationGroup(allTechExamplesAnnotations)
@@ -100,3 +88,26 @@ elementsToAnimateOnhover.forEach(el => {
         }
     })
 })
+
+function findAnnotationsForProjectByTechType(projects, tech) {
+    const annotationsForProjectsThatIncludeTechType = []
+    for (const projectKey in projects) {
+        const project = projects[projectKey]
+        if (project.tech.includes(tech)) {
+            annotationsForProjectsThatIncludeTechType.push(project.annotation)
+        }
+    }
+
+    return annotationsForProjectsThatIncludeTechType
+}
+
+function findWorkplaceTechAnnotationsByTechType(workplaces, tech) {
+    const annotationsForWorkplacesThatIncludeTechType = []
+    workplaces.forEach(workplaceItem => {
+        if (workplaceItem.tech.includes(tech)) {
+            annotationsForWorkplacesThatIncludeTechType.push(workplaceItem.annotation)
+        }
+    })
+
+    return annotationsForWorkplacesThatIncludeTechType
+}
