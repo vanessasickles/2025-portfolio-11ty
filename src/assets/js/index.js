@@ -3,6 +3,8 @@ import { annotate, annotationGroup } from 'rough-notation';
 // to-do: enable pre-annotated items via query string
 // to-do: extract highlighting logic into a function to DRY add it to focus & active states
 
+const allAnnotations = []
+
 const prefersReducedMotion = window && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 const annotationColorByTheme = {
     light: 'var(--color-blue)',
@@ -30,11 +32,14 @@ const projectTechData = {}
 
 projectElements.forEach(el => {
     if (el.dataset.name && el.dataset.tech) {
+        const annotation = annotate(el, defaultBoxSettings)
         projectTechData[el.dataset.name] = {
             element: el,
             tech: el.dataset.tech.split(','),
-            annotation: annotate(el, defaultBoxSettings)
+            annotation: annotation
         }
+
+        allAnnotations.push(annotation)
     }
 })
 
@@ -43,51 +48,104 @@ const workplaceTechExamples = []
 
 workplaceElements.forEach(el => {
     if (el.dataset.tech) {
+        const annotation = annotate(el, defaultUnderlineSettings)
         workplaceTechExamples.push({
             element: el,
             tech: el.dataset.tech.split(','),
-            annotation: annotate(el, defaultUnderlineSettings)
+            annotation: annotation
         })
+
+        allAnnotations.push(annotation)
     }
 })
 
-elementsToAnimateOnhover.forEach(el => {
-    const annotation = annotate(el, defaultUnderlineSettings)
-    el.addEventListener('mouseenter', () => {
-        annotation.show()
+// Extracted function for annotation search + effects to apply to hover and focus alike
+const annotateAll = (originatingElement, annotation, disableEventName) => {
+    annotation.show()
+    console.log(annotation, typeof annotation)
 
-        el.addEventListener('mouseleave', () => {
+    originatingElement.addEventListener(disableEventName, () => {
+        const ariaPressed = originatingElement.getAttribute('aria-pressed') === 'true'
+        if (!ariaPressed) {
             annotation.hide()
-        })
-
-        // If it's a tech button, light up projects with this data tag
-        const isTechnologyButton = el.parentNode.parentNode.getAttribute("id") === 'technologies-list'
-        if (isTechnologyButton) {
-            const techType = el.innerHTML
-
-            const allTechExamplesAnnotations = []
-
-            // Highlight projects that use this tech
-            findAnnotationsForProjectByTechType(projectTechData, techType).forEach(projectAnnotation => {
-                allTechExamplesAnnotations.push(projectAnnotation)
-                el.addEventListener('mouseleave', () => {
-                    projectAnnotation.hide()
-                })
-            })
-
-            // Highlight experience example that uses this tech
-            findWorkplaceTechAnnotationsByTechType(workplaceTechExamples, techType).forEach(techAnnotation => {
-                allTechExamplesAnnotations.push(techAnnotation)
-                el.addEventListener('mouseleave', () => {
-                    techAnnotation.hide()
-                })
-            })
-
-            const techAnnotationGroup = annotationGroup(allTechExamplesAnnotations)
-            techAnnotationGroup.show()
         }
     })
+
+    // If it's a tech button, light up projects with this data tag
+    const isTechnologyButton = document.querySelector("#technologies-list").contains(originatingElement)
+    if (isTechnologyButton) {
+        const techType = originatingElement.innerHTML
+        const allTechExamplesAnnotations = []
+
+        // Highlight projects that use this tech
+        findAnnotationsForProjectByTechType(projectTechData, techType).forEach(projectAnnotation => {
+            if (projectAnnotation._state ==='not-showing') {
+                allTechExamplesAnnotations.push(projectAnnotation)
+            }
+            originatingElement.addEventListener(disableEventName, () => {
+                const ariaPressed = originatingElement.getAttribute('aria-pressed') === 'true'
+                if (!ariaPressed) {
+                    projectAnnotation.hide()
+                }
+                
+            })
+        })
+
+        // Highlight experience examples that use this tech
+        findWorkplaceTechAnnotationsByTechType(workplaceTechExamples, techType).forEach(techAnnotation => {
+            if (techAnnotation._state ==='not-showing') {
+                allTechExamplesAnnotations.push(techAnnotation)
+            }
+            
+            originatingElement.addEventListener(disableEventName, () => {
+                const ariaPressed = originatingElement.getAttribute('aria-pressed') === 'true'
+                if (!ariaPressed) {
+                    techAnnotation.hide()
+                }
+            })
+        })
+
+        const techAnnotationGroup = annotationGroup(allTechExamplesAnnotations)
+        techAnnotationGroup.show()
+    }
+}
+
+elementsToAnimateOnhover.forEach(el => {
+    const annotation = annotate(el, defaultUnderlineSettings)
+    allAnnotations.push(annotation)
+
+    const elAriaPressed = el.getAttribute('aria-pressed') === 'true'
+
+    el.addEventListener('mouseenter', () => {
+        annotateAll(el, annotation, 'mouseleave')
+    })
+
+    // Add same funcitonality, but for focusout
+    el.addEventListener('focusin', () => {
+        annotateAll(el, annotation, 'focusout')
+    })
 })
+
+// Set up tech toggle buttons to use aria-pressed to manage state
+const allTechToggles = document.querySelectorAll('#technologies-list button[aria-pressed]')
+allTechToggles.forEach(toggle => {
+    const annotationMatchingPressedButton = findAnnotationInSetByNode(allAnnotations, toggle)
+    const techType = toggle.innerHTML
+    const annotationsToGroup = []
+
+    if (annotationMatchingPressedButton) {
+        annotationsToGroup.push(annotationMatchingPressedButton)
+    }
+
+    addEventListener('click', (e) => {
+        const pressed = e.target.getAttribute('aria-pressed') === 'true'
+        // console.log(annotationMatchingPressedButton)
+
+        // Set to now-pressed        
+        e.target.setAttribute('aria-pressed', String(!pressed))
+    })
+})
+
 
 function findAnnotationsForProjectByTechType(projects, tech) {
     const annotationsForProjectsThatIncludeTechType = []
@@ -110,4 +168,11 @@ function findWorkplaceTechAnnotationsByTechType(workplaces, tech) {
     })
 
     return annotationsForWorkplacesThatIncludeTechType
+}
+
+function findAnnotationInSetByNode(annotationSet, node) {
+    const annotationMatchingSpecifiedNode = annotationSet.find((annotation) => {
+        return annotation._e === node
+    })
+    return annotationMatchingSpecifiedNode
 }
