@@ -128,11 +128,11 @@ b {
     }
 
     h1, h2, h3 {
-        @apply mt-8 font-black lowercase text-white;
+        @apply mt-8 font-black lowercase dark:text-white;
     }
 
     h4, h5, h6 {
-        @apply font-bold text-blue-tint;
+        @apply font-bold dark:text-blue-tint;
     }
 
     h2 {
@@ -202,7 +202,7 @@ b {
 }
 
 .skiplink {
-    @apply absolute top-4 w-0.5 h-0.5 z-1 overflow-hidden text-2xl;
+    @apply absolute top-4 w-0.5 h-0.5 z-1 overflow-hidden text-2xl z-50;
     left: -10000px;
 
     &:focus {
