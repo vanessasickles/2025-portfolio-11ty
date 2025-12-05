@@ -11,8 +11,11 @@
         </div>
     </div>
     <h2 class="mt-8 mb-2">Creating in...</h2>
-    <section class="technologies box">
+    <section class="technologies box relative">
         <!-- to-do: aria skip and explanation for tech list -->
+        <span id="technology-instructions" class="motion-safe:animate-bounce">
+            {% icon "arrow-arch" %} <span class="text lowercase">Interact to highlight <br>usage of this tech<span class="xl:hidden"> below</span>!</span>
+        </span>
         <ul id="technologies-list">
             <li><button>HTML</button></li>
             <li><button>CSS</button></li>

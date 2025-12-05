@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source inline("hidden");
 /* To-do: remove unused font weights */
 
 @theme {
@@ -14,6 +15,18 @@
     --font-sans: "Merriweather Sans", sans-serif;
 
     --default-transition-duration: 0.15s;
+
+    --animate-bounce: bounce 0.75s infinite;
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(-5%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+            transform: none;
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+    }
 }
 
 @utility standard-link {
@@ -50,9 +63,9 @@ body {
         @variant xl {
             @apply grid;
             grid-template-columns: 30% calc(70% - 2rem);
-            grid-auto-rows: min-content;
             grid-template-areas:
-                "sidebar main";
+                "sidebar main"
+                "sidebar footer";
         }
 
         @variant 2xl {
@@ -62,6 +75,7 @@ body {
 }
 
 .sidebar-column {
+    @apply relative z-20;
     grid-area: sidebar;
 }
 
@@ -69,12 +83,16 @@ main {
     grid-area: main;
 }
 
+footer {
+    grid-area: footer;
+}
+
 .logo {
     @apply text-7xl font-black leading-none;
 }
 
 .box {
-    @apply border-2 border-black-tint dark:border-blue-tint p-4;
+    @apply border-1 border-black-tint dark:border-blue-tint p-6;
 
     @variant md {
         @apply p-6;
@@ -195,7 +213,7 @@ b {
         @apply my-6;
 
         img {
-            @apply border-black-tint border-2;
+            @apply border-black-tint border-1;
         }
 
         figcaption {
