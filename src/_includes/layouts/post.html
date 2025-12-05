@@ -3,9 +3,9 @@ layout: layouts/base.html
 style: post
 script: post
 ---
-<div class="sidebar-column">
+<div id="top" class="sidebar-column">
     <a href="/" class="text-xl inline-block mb-6 dark:text-white dark:hover:text-white">
-        back to <span class="font-black"><span class="text-blue dark:text-dark-blue">vanessasickles</span>.dev</span>
+        <span class="text-blue text-blue-dark inline-block mr-1 font-black">‹</span> back to <span class="font-black"><span class="text-blue dark:text-dark-blue">vanessasickles</span>.dev</span>
     </a>
     <a class="linkout skiplink" href="#tech-used">Skip to tech used for this project</a>
     <a class="linkout skiplink" href="#toc">Skip to table of contents for this project</a>
@@ -49,3 +49,7 @@ script: post
 <main id="main-content" class="content">
     {{ content }}
 </main>
+<a id="back-to-top" class="fixed left-6 -bottom-6 font-bold text-xl dark:text-white transition" href="#top">
+    <span class="text-blue dark:text-dark-blue font-black">⌃</span> back to
+    top
+</a>

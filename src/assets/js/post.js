@@ -1,3 +1,25 @@
+// Back to top
+const options = {
+    rootMargin: "0px",
+    scrollMargin: "0px",
+    threshold: 0.25
+};
+const backToTop = document.querySelector("#back-to-top")
+const sidebar = document.querySelector(".sidebar-column")
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+        
+        if (!entry.isIntersecting) {
+            console.log(backToTop)
+            backToTop.style.transform("translateY(50%)")
+        } else {
+        }
+    })
+}, options)
+observer.observe(sidebar)
+
+// Annotations
 import { annotate } from 'rough-notation'
 
 const annotationColorByTypeAndTheme = {

@@ -6,7 +6,7 @@ body.post {
     max-width: 800px;
 
     @variant xl {
-        @apply grid max-w-full;
+        @apply grid max-w-full items-start;
         grid-template-columns: calc(45% - 2rem) calc(55% - 2rem);
         grid-auto-rows: min-content;
         grid-template-areas:
