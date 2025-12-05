@@ -17,7 +17,7 @@ body.post {
     @variant 2xl {
         grid-template-columns: 30% minmax(calc(40% - 2rem), 800px) calc(30% - 2rem);
         grid-template-areas:
-                "sidebar main toc";
+            "sidebar main toc";
     }
 }
 

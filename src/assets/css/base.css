@@ -63,9 +63,9 @@ body {
         @variant xl {
             @apply grid;
             grid-template-columns: 30% calc(70% - 2rem);
-            grid-auto-rows: min-content;
             grid-template-areas:
-                "sidebar main";
+                "sidebar main"
+                "sidebar footer";
         }
 
         @variant 2xl {
@@ -81,6 +81,10 @@ body {
 
 main {
     grid-area: main;
+}
+
+footer {
+    grid-area: footer;
 }
 
 .logo {

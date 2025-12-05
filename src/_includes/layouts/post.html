@@ -28,7 +28,7 @@ script: post
         {% endif %}
     </div>
 
-    <div id="tech-used" class="technologies-used mt-8">
+    <div id="tech-used" class="technologies-used my-8">
         <h2 class="mt-8 mb-2">Created with...</h2>
         <div class="box">
             <ul>
@@ -37,6 +37,10 @@ script: post
             {%- endfor -%}
             </ul>
         </div>
+    </div>
+
+    <div class="hidden xl:block">
+        {% include "partials/footer.html" %}
     </div>
 </div>
 <a class="linkout skiplink" href="#main-content">Skip the table of contents and go to main content</a>
@@ -49,3 +53,7 @@ script: post
 <main id="main-content" class="content">
     {{ content }}
 </main>
+
+<div class="block xl:hidden my-16">
+    {% include "partials/footer.html" %}
+</div>
