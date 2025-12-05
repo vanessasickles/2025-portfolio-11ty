@@ -22,7 +22,7 @@
 
 .project-wrap {
     .name {
-        @apply text-6xl font-black lowercase relative dark:text-white;
+        @apply text-6xl font-black lowercase relative dark:text-white leading-none;
     }
 
     .tech-used {
@@ -50,11 +50,15 @@
     }
 
     .work-description {
-        @apply flex flex-wrap gap-x-8 gap-y-1 mt-2 text-xl lowercase;
+        @apply flex flex-wrap gap-x-8 gap-y-3 mt-2 text-xl lowercase;
+
+        @variant md {
+            @apply gap-y-1;
+        }
     }
 
     .work-data {
-        @apply flex gap-2 flex-wrap lowercase;
+        @apply text-2xl flex gap-2 flex-wrap lowercase mt-1 dark:text-white;
     }
 }
 

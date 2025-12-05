@@ -25,7 +25,7 @@ body.post {
     @apply my-12 lowercase;
     grid-area: toc;
 
-    @variant xl {
+    @variant 2xl {
         @apply mt-12 sticky top-20 h-min;
     }
 

@@ -2,7 +2,6 @@
 @source inline("hidden");
 /* To-do: remove unused font weights */
 
-
 @theme {
     --color-dark-blue: #1eb4ff;
     --color-blue: #0e75c1;
@@ -48,21 +47,29 @@ html {
 }
 
 body {
-    @apply bg-white p-8 font-sans text-black w-full dark:bg-black dark:text-blue-tint;
+    @apply bg-white p-4 font-sans text-black w-full dark:bg-black dark:text-blue-tint;
+
+    @variant xl {
+        @apply p-6;
+    }
+
+    @variant 2xl {
+        @apply p-8;
+    }
 
     &.index {
         @apply gap-8;
 
         @variant xl {
             @apply grid;
-            grid-template-columns: 25% calc(75% - 2rem);
+            grid-template-columns: 30% calc(70% - 2rem);
             grid-auto-rows: min-content;
             grid-template-areas:
                 "sidebar main";
         }
 
         @variant 2xl {
-            grid-template-columns: 20% calc(80% - 2rem);
+            grid-template-columns: 25% calc(75% - 2rem);
         }
     }
 }
@@ -70,10 +77,6 @@ body {
 .sidebar-column {
     @apply relative z-20;
     grid-area: sidebar;
-
-    @variant xl {
-        @apply sticky top-8 h-min;
-    }
 }
 
 main {
@@ -88,7 +91,7 @@ main {
     @apply border-1 border-black-tint dark:border-blue-tint p-6;
 
     @variant md {
-        @apply p-8;
+        @apply p-6;
     }
 
     & + .box {
@@ -105,7 +108,7 @@ b {
 }
 
 .linkout {
-    @apply inline-flex items-center relative !ml-0 pl-2 pr-3 py-1 mx-1 gap-x-1.5 bg-blue-tint border-blue text-black dark:bg-white border-1 rounded lowercase cursor-pointer font-semibold transition;
+    @apply text-xl inline-flex items-center relative !ml-0 pl-2 pr-3 py-1 mx-1 gap-x-1.5 bg-blue-tint border-blue text-black dark:bg-white border-1 rounded lowercase cursor-pointer font-semibold transition;
 
     &:hover {
         @apply bg-blue text-white transition;
