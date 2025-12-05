@@ -91,3 +91,23 @@ h2 {
         }
     }
 }
+
+#technology-instructions {
+    @apply absolute right-4 -top-20 flex items-start -rotate-5 text-2xl z-10 text-shadow-2xs dark:text-white font-black leading-tight;
+
+    @variant xl {
+        @apply -right-70 -top-20;
+    }
+
+    .text {
+        @apply px-4 pb-5;
+    }
+
+    .icon-arrow-arch {
+        @apply rotate-160 w-30 h-30 mr-2;
+
+        path {
+            @apply fill-blue dark:fill-dark-blue;
+        }
+    }
+}

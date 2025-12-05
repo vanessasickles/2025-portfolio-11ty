@@ -4,11 +4,18 @@ import { annotate, annotationGroup } from 'rough-notation';
 // to-do: extract highlighting logic into a function to DRY add it to focus & active states
 
 const prefersReducedMotion = window && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-const annotationColorByTheme = {
-    light: 'var(--color-blue)',
-    dark: 'var(--color-dark-blue)'
+const prefersDark = window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+const annotationColorByTypeAndTheme = {
+    highlight: {
+        light: 'var(--color-highlight)',
+        dark: 'var(--color-dark-highlight)'
+    },
+    line: {
+        light: 'var(--color-blue)',
+        dark: 'var(--color-dark-blue)'
+    }
 }
-const annotationColor = (window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? annotationColorByTheme['dark'] : annotationColorByTheme['light']
+const themePreference = prefersDark ? 'dark' : 'light'
 
 // Items to underline on hover
 const hoverSelectors = [
@@ -17,8 +24,10 @@ const hoverSelectors = [
 ]
 const hoverSelectorsString = hoverSelectors.join(",")
 const elementsToAnimateOnhover = document.querySelectorAll(hoverSelectorsString)
-const defaultUnderlineSettings = { type: 'underline', color: annotationColor, animationDuration: 250, strokeWidth: 6, padding: 0, animate: !prefersReducedMotion, multiline: true }
-const defaultBoxSettings = { type: 'box', color: annotationColor, animationDuration: 350, strokeWidth: 6, padding: 16, animate: !prefersReducedMotion }
+const tutorialText = document.querySelector("#technology-instructions")
+const defaultUnderlineSettings = { type: 'underline', color: annotationColorByTypeAndTheme['line'][themePreference], animationDuration: 250, strokeWidth: 6, padding: 0, animate: !prefersReducedMotion, multiline: true }
+const defaultBoxSettings = { type: 'box', color: annotationColorByTypeAndTheme['line'][themePreference], animationDuration: 350, strokeWidth: 6, padding: 16, animate: !prefersReducedMotion }
+const defaultHighlightSettings = { type: 'highlight', color: annotationColorByTypeAndTheme['highlight'][themePreference], animationDuration: 500, multiline: true, animate: !prefersReducedMotion, iterations: 2 }
 
 function classify(string) {
     return string.replace(/[., ]/g, '-').toLowerCase() 
@@ -60,12 +69,15 @@ elementsToAnimateOnhover.forEach(el => {
             annotation.hide()
         })
 
-        // If it's a tech button, light up projects with this data tag
+        // If it's a tech button, light up projects with this data tag and remove the tutorial prompt
         const isTechnologyButton = el.parentNode.parentNode.getAttribute("id") === 'technologies-list'
         if (isTechnologyButton) {
             const techType = el.innerHTML
-
             const allTechExamplesAnnotations = []
+
+            if (tutorialText && !tutorialText.classList.contains("hidden")) {
+                tutorialText.classList.add("!hidden")
+            }
 
             // Highlight projects that use this tech
             findAnnotationsForProjectByTechType(projectTechData, techType).forEach(projectAnnotation => {
@@ -88,6 +100,9 @@ elementsToAnimateOnhover.forEach(el => {
         }
     })
 })
+
+const instructionAnnotation = annotate(document.querySelector('#technology-instructions .text'), defaultHighlightSettings)
+instructionAnnotation.show()
 
 function findAnnotationsForProjectByTechType(projects, tech) {
     const annotationsForProjectsThatIncludeTechType = []
