@@ -33,6 +33,11 @@ function classify(string) {
     return string.replace(/[., ]/g, '-').toLowerCase() 
 }
 
+const seenTutorialText = !!await cookieStore.get('vs_seen_tutorial');
+if (!seenTutorialText && tutorialText) {
+    tutorialText.classList.remove("!hidden")
+}
+
 // get project data map
 const projectElements = document.querySelectorAll('.project')
 const projectTechData = {}
@@ -75,8 +80,9 @@ elementsToAnimateOnhover.forEach(el => {
             const techType = el.innerHTML
             const allTechExamplesAnnotations = []
 
-            if (tutorialText && !tutorialText.classList.contains("hidden")) {
+            if (!seenTutorialText && tutorialText) {
                 tutorialText.classList.add("!hidden")
+                cookieStore.set({ name: 'vs_seen_tutorial', value: 1 })
             }
 
             // Highlight projects that use this tech
