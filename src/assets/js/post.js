@@ -1,23 +1,59 @@
-// Back to top
-const options = {
+const prefersReducedMotion = window && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// Sidebar observer for back to top
+const backToTopOptions = {
     rootMargin: "0px",
     scrollMargin: "0px",
     threshold: 0.25
 };
-const backToTop = document.querySelector("#back-to-top")
+const backToTop = document.querySelector(".back-to-top-wrap")
 const sidebar = document.querySelector(".sidebar-column")
 
-const observer = new IntersectionObserver((entries, observer) => {
+const backToTopObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
-        
-        if (!entry.isIntersecting) {
-            console.log(backToTop)
-            backToTop.style.transform("translateY(50%)")
+        const classes = backToTop.classList
+        if (entry.isIntersecting) {
+            if (classes.contains('slide-in')) {
+                classes.add('slide-out')
+                classes.remove('slide-in')
+            }
         } else {
+            classes.add('slide-in')
+            classes.remove('slide-out')
         }
     })
-}, options)
-observer.observe(sidebar)
+}, backToTopOptions)
+backToTopObserver.observe(sidebar)
+
+// Sidebar observer for scrollGroup
+const scrollGroupOptions = {
+    rootMargin: "0px",
+    scrollMargin: "0px",
+    threshold: 0
+};
+
+function convertRemToPixels(rem) {    
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
+
+const scrollGroup = document.querySelector('#scroll-group')
+const scrollGroupObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+        if (window.innerWidth > convertRemToPixels(80)) {
+            const classes = scrollGroup.classList
+            if (entry.isIntersecting) {
+                classes.remove('top-fixed')
+                classes.remove('slide-in-top')
+            } else {
+                if (!prefersReducedMotion) {
+                    classes.add('slide-in-top')
+                }
+                classes.add('top-fixed')
+            }
+        }
+    })
+}, scrollGroupOptions)
+scrollGroupObserver.observe(sidebar)
 
 // Annotations
 import { annotate } from 'rough-notation'
@@ -32,12 +68,12 @@ const annotationColorByTypeAndTheme = {
         dark: 'var(--color-dark-blue)'
     }
 }
-const prefersReducedMotion = window && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
 const prefersDark = window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 const highlightAnnotationColor = prefersDark ? annotationColorByTypeAndTheme['highlight']['dark'] : annotationColorByTypeAndTheme['highlight']['light']
 const lineAnnotationColor = prefersDark ? annotationColorByTypeAndTheme['line']['dark'] : annotationColorByTypeAndTheme['line']['light']
 
-const defaultHighlightSettings = { type: 'highlight', color: highlightAnnotationColor, animationDuration: 250, strokeWidth: 4, multiline: true, animate: !prefersReducedMotion }
+const defaultHighlightSettings = { type: 'highlight', color: highlightAnnotationColor, animationDuration: 250, strokeWidth: 4, multiline: true, animate: !prefersReducedMotion, padding: '0 2px' }
 const allLinks = document.querySelectorAll('a:not(.linkout)')
 
 allLinks.forEach(linkEl => {

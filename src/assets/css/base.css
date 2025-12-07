@@ -230,3 +230,27 @@ b {
         @apply absolute left-4 w-auto h-auto;
     }
 }
+
+.arrow {
+    @apply border-solid border-blue dark:border-dark-blue border-r-4 border-b-4 inline-block p-1;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
