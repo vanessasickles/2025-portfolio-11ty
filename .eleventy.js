@@ -1,6 +1,5 @@
 
 import EleventyVitePlugin from '@11ty/eleventy-plugin-vite'
-import { HtmlBasePlugin } from "@11ty/eleventy"
 import pluginIcons from 'eleventy-plugin-icons'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -48,7 +47,6 @@ export default function (eleventyConfig) {
 		]
 	})
 	eleventyConfig.addPlugin(syntaxHighlight)
-	eleventyConfig.addPlugin(HtmlBasePlugin);
 
 	eleventyConfig.addPassthroughCopy('src/assets')
 	eleventyConfig.addPassthroughCopy('favicon.ico')
