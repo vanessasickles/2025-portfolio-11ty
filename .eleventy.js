@@ -78,6 +78,16 @@ export default function (eleventyConfig) {
 		return array.join(",")
 	})
 
+	// Liquid filter for escaping text for use in an HTML attribute
+	eleventyConfig.addLiquidFilter("escape", function(string) {
+		return string
+			.replaceAll("&", "&amp;")
+			.replaceAll("<", "&lt;")
+			.replaceAll(">", "&gt;")
+			.replaceAll('"', "&quot;")
+			.replaceAll("'", "&#039;")
+	})
+
 	eleventyConfig.addFilter('markdownify', (markdownString) => md.render(markdownString))
 
 	return {
