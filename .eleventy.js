@@ -50,6 +50,7 @@ export default function (eleventyConfig) {
 
 	eleventyConfig.addPassthroughCopy('src/assets');
 	eleventyConfig.addPassthroughCopy('favicon.ico');
+	eleventyConfig.addPassthroughCopy('website-preview.png');
 	eleventyConfig.addPassthroughCopy('manifest.webmanifest');
 
 	// Automatically add anchor links to headings, and parse the table of contents
