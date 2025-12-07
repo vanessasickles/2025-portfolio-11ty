@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.html
 pageTitle: Portfolio Site with 11ty, Tailwind&shy;CSS
-date: 2025-10-11
+date: 2025-10-09
 fullTitle: Building a Portfolio Site with 11ty, Tailwind CSS, JavaScript, and Vite
 blurb: After many years, I felt that I needed a new portfolio site to showcase my work. I wanted to create something new and starkly different from anything I'd created before, so I branched out into something more minimal and typographic. I experimented with a static site generator that had always interested me, and focused on a layout that emphasizes my tech stack and experience.
 tags: project
