@@ -27,6 +27,12 @@ export default function (eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
 		viteOptions: {
 			plugins: ['tailwindcss/nesting', tailwindcss()],
+			esbuild: {
+				supported: {
+					'top-level-await': true
+				},
+			},
+
 		},
 	})
 	eleventyConfig.addPlugin(pluginIcons, {
