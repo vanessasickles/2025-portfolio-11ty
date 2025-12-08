@@ -88,13 +88,17 @@ footer {
 }
 
 .logo {
-    @apply text-7xl font-black leading-none;
+    @apply text-6xl font-black leading-none;
+
+    @variant sm {
+        @apply text-7xl;
+    }
 }
 
 .box {
-    @apply border-1 border-black-tint dark:border-blue-tint p-6;
+    @apply border-1 border-black-tint dark:border-blue-tint p-4;
 
-    @variant md {
+    @variant sm {
         @apply p-6;
     }
 
@@ -112,7 +116,11 @@ b {
 }
 
 .linkout {
-    @apply text-xl inline-flex items-center relative !ml-0 pl-2 pr-3 py-1 mx-1 gap-x-1.5 bg-blue-tint border-blue text-black dark:bg-white border-1 rounded lowercase cursor-pointer font-semibold transition;
+    @apply inline-flex items-center relative !ml-0 pl-2 pr-3 py-1 mx-1 gap-x-1.5 bg-blue-tint border-blue text-black dark:bg-white border-1 rounded lowercase cursor-pointer font-semibold transition;
+
+    @variant sm {
+        @apply text-xl;
+    }
 
     &:hover {
         @apply bg-blue text-white transition;

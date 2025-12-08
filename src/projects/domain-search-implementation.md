@@ -1,6 +1,6 @@
 ---
 layout: layouts/post.html
-pageTitle: Domain Search UX and API Implemen&shy;tation
+pageTitle: Domain Search UX and API Imple&shy;men&shy;tation
 date: 2025-10-10
 fullTitle: Implementing a Domain Search API from Scratch in a New User Interface
 blurb: At a prior place of employment, I was tasked to develop a domain search experience from the ground up in **Vue.js** and **PHP**, implementing several existing APIs in the process, and augmenting another **Ruby on Rails API** with additional endpoints to support the feature's data needs.
