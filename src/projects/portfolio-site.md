@@ -17,10 +17,10 @@ tech:
 ---
 
 ## Features
-- Static 11ty site deployed with Netlify
+- Static **11ty** site deployed with **Netlify**
 - Site **fully responsive** on all devices
-- **Dark and light themes** that respect your device's `prefer-color-scheme` setting
-- Dynamic **JavaScript highlighting of projects and experiences** that uses hovered tech
+- **Dark and light themes** that respect your device's `prefer-color-scheme` setting and **animations** that respect your device's `prefer-reduced-motion` setting
+- Dynamic **JavaScript highlighting of projects and experiences** based on hovered tech
 - **A focus on accessibility,** including focus effects, skipnav links, and intuitive content ordering
 - ...and more!
 
@@ -52,9 +52,9 @@ I knew that if I wanted to have fun with this project, I'd want to return to Tai
 
 Tailwind's bundled `tailwindcss/nesting` plugin has `postcss-nested` built in, which I'd reach for anyway to give me the nesting capabilities I'm used to with SASS.
 
-Now, you might notice that unlike a normal Tailwind site, the markup is still fairly readable. This is because I use [Tailwind's `@apply` syntax](https://tailwindcss.com/docs/functions-and-directives#apply-directive) to apply their utility classes in the site's CSS files rather than adding them inline. This keeps the DOM fairly clean and readable, while letting me iterate insanely fast with minimal keystrokes in my CSS file.
+Throughout the site, I use a mixture of inline utility classes, as well as [Tailwind's `@apply` syntax](https://tailwindcss.com/docs/functions-and-directives#apply-directive) for classes I'd rather have in CSS files rather than adding them inline. This keeps the DOM fairly clean and readable where I want it to be, while letting me iterate insanely fast with minimal keystrokes in my CSS file.
 
-Yes, I know that some years ago, this was considered [a deeply-regretted anti-pattern by the creator of Tailwind](https://x.com/adamwathan/status/1559250403547652097). There's a variety of pros and cons to inline utility classes, and I am happy to use them inline for any project with more granular templating that enables my code to remain DRY. But for my purposes, I highly value readability in my markup for my personal projects, and once you get to more than a few utility classes, the markup becomes difficult to read and modify in a template. It pulls you out of a flow state to slow down and figure out which element you're looking at, which for more complicated layouts, can become quite overwhelming. So I like using `@apply`. Thanks, Adam. Sorry about your hundreds of thousands of dollars, Adam.
+Yes, I know that some years ago, this was considered [a deeply-regretted anti-pattern by the creator of Tailwind](https://x.com/adamwathan/status/1559250403547652097). There's a variety of pros and cons to inline utility classes, and **I regularly use them inline for any project with more granular templating** that enables my code to remain DRY. But for my purposes for building a small site maintained only by myself, I **highly value readability in my markup** for my personal projects, and once you get to more than a few utility classes, the markup becomes difficult to read and modify in a template. It pulls you out of a flow state to slow down and figure out which element you're looking at, which  can become quite overwhelming. So I like using `@apply`. Thanks, Adam. Sorry about your hundreds of thousands of dollars, Adam.
 
 Anyway. That aside! I like Tailwind. So I used Tailwind!
 
@@ -108,3 +108,5 @@ It was fun to check out v4 of TailwindCSS and see how much the framework has gro
 [Rough Notation](https://github.com/rough-stuff/rough-notation) was a real treat to work with. I'm usually picky on styling for these kinds of effects, but it just looked good right out of the box, and I had very few issues. I actually had to be careful to not over-use the effects because they are simply just that fun.
 
 The JavaScript for the tech highlighting feature was simple but fun. I index the project and experience elements in an object to organize their elements and extract their attached data properties, then attach event listeners that show and hide the already-instantiated annotations when requested. Normally, I'd reach for class-based addition and subtraction for a highlighting feature like this, but since Rough Notation draws the SVGs with JavaScript, they don't have that kind of option available. It was still lovely and easy enough, even then, and it's very snappy.
+
+Overall, I found the project extremely fun and satisfying, allowing me to create a site that I've been really proud of.
