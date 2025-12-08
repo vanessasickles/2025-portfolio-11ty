@@ -13,9 +13,8 @@ blurb: A people-first, multi-discipline software engineer with a keen design sen
     <meta property="og:title" content="{{ title }} - {{ pageTitle }}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://vanessasickles.dev{{ page.url }}" />
-    <meta property="og:description" content="{{ blurb }}">
-    <meta property="og:image" content="https://vanessasickles.dev/assets/images/website-preview.png" />
-
+    <meta property="og:description" content="{{ blurb | escape }}">
+    
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
