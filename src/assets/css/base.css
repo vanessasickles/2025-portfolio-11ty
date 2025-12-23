@@ -262,3 +262,37 @@ b {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+    .animate-fade-in {
+        animation: 0.3s ease-in 1 both fade-in;
+
+        &.delay-1 {
+            animation-delay: 0.25s;
+        }
+
+        &.delay-2 {
+            animation-delay: 0.5s;
+        }
+
+        &.delay-3 {
+            animation-delay: 0.75s
+        }
+
+        &.delay-4 {
+            animation-delay: 1s
+        }
+    }
+
+    @keyframes fade-in {
+        0% {
+            transform: translateY(2rem);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 100%;
+        }
+    }
+}

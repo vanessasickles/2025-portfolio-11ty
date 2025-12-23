@@ -9,8 +9,8 @@ layout: layouts/base.html
 
 <main id="main-content">
     <section class="projects mb-8 mt-8 xl:mb-12 xl:mt-0">
-        <h2 class="mb-2">Projects</h2>
-        <div class="box">
+        <h2 class="mb-2 animate-fade-in delay-3">Projects</h2>
+        <div class="box animate-fade-in delay-3">
             {%- for project in collections.project -%}
             <div class="project-wrap">
                 <article class="project" data-name="{{ project.data.pageTitle | classify }}" data-tech="{{ project.data.tech | arrayCommaJoin }}">
@@ -38,8 +38,8 @@ layout: layouts/base.html
     </section>
 
     <section class="experience">
-        <h2 class="mb-2">Experience</h2>
-        <ul class="box">
+        <h2 class="mb-2 animate-fade-in delay-4">Experience</h2>
+        <ul class="box animate-fade-in delay-4">
             <li class="workplace">
                 <h3>Frontend Engineer <b>@</b> Corporate Tools</h3>
                 <div class="work-data"><span class="duration">3yr 8mo</span> • <span class="work-type">Remote</span></div>
