@@ -31,8 +31,8 @@ export default function (eleventyConfig) {
 				supported: {
 					'top-level-await': true
 				},
-			},
-
+				minify: true
+			}
 		},
 	})
 	eleventyConfig.addPlugin(pluginIcons, {
