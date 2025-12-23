@@ -8,9 +8,9 @@ layout: layouts/base.html
 {% include "partials/sidebar.html" %}
 
 <main id="main-content">
-    <section class="projects mb-8 mt-8 xl:mb-12 xl:mt-0">
-        <h2 class="mb-2 animate-fade-in delay-3">Projects</h2>
-        <div class="box animate-fade-in delay-3">
+    <section class="projects mb-8 mt-8 xl:mb-12 xl:mt-0 animate-fade-in delay-2">
+        <h2 class="mb-2">Projects</h2>
+        <div class="box">
             {%- for project in collections.project -%}
             <div class="project-wrap">
                 <article class="project" data-name="{{ project.data.pageTitle | classify }}" data-tech="{{ project.data.tech | arrayCommaJoin }}">
@@ -37,9 +37,9 @@ layout: layouts/base.html
         </div>
     </section>
 
-    <section class="experience">
-        <h2 class="mb-2 animate-fade-in delay-4">Experience</h2>
-        <ul class="box animate-fade-in delay-4">
+    <section class="experience  animate-fade-in delay-3">
+        <h2 class="mb-2">Experience</h2>
+        <ul class="box">
             <li class="workplace">
                 <h3>Frontend Engineer <b>@</b> Corporate Tools</h3>
                 <div class="work-data"><span class="duration">3yr 8mo</span> • <span class="work-type">Remote</span></div>
