@@ -8,7 +8,7 @@ layout: layouts/base.html
 {% include "partials/sidebar.html" %}
 
 <main id="main-content">
-    <section class="projects mb-8 mt-8 xl:mb-12 xl:mt-0">
+    <section class="projects mb-8 mt-8 xl:mb-12 xl:mt-0 animate-fade-in delay-2">
         <h2 class="mb-2">Projects</h2>
         <div class="box">
             {%- for project in collections.project -%}
@@ -37,7 +37,7 @@ layout: layouts/base.html
         </div>
     </section>
 
-    <section class="experience">
+    <section class="experience  animate-fade-in delay-3">
         <h2 class="mb-2">Experience</h2>
         <ul class="box">
             <li class="workplace">

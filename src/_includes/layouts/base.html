@@ -22,7 +22,7 @@ blurb: A people-first, multi-discipline software engineer with a keen design sen
 
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" crossorigin>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/{{ style }}.css">
@@ -30,7 +30,7 @@ blurb: A people-first, multi-discipline software engineer with a keen design sen
 <body class="{{ style }}">
     {{ content }}
     {% if script %}
-        <script src="/assets/js/{{ script }}.js" type="module"></script>
+        <script defer src="/assets/js/{{ script }}.js" type="module"></script>
     {% endif %}
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6321f132ef59484f90c2b34faaed3d55"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
