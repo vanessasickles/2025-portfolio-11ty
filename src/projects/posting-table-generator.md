@@ -5,7 +5,7 @@ date: 2025-10-11
 fullTitle: Building a Custom HTML/CSS Posting Table Generator with Vue.js and Pinia
 blurb: In some online communities, collaborative writers participate in joint storytelling with their original characters. While doing so, many want to decorate their writing ("posts") with a certain aesthetic. They will use custom HTML and CSS to decorate their posts, and in the process, often end up creating unresponsive or layout-breaking codes. To address this problem, I used **Vue.js** and **Pinia** to create an interactive interface for visually creating and customizing these posting tables, which consistently generates non-breaking code for them to use instead.
 tags: project
-githubUrl: https://github.com/vanessasickles/table-generator
+githubUrl: https://gitfront.io/r/vanessasickles/Y5Em9KYoAwwN/table-generator/
 liveUrl: https://vue-table-generator.netlify.app/
 tech:
 - Vue.js
