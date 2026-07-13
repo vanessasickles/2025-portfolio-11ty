@@ -32,6 +32,7 @@ script: post
         </div>
     </div>
 
+    {% if tech %}
     <div id="tech-used" class="technologies-used my-8">
         <h2 class="mt-8 mb-2 animate-fade-in delay-2">Created with...</h2>
         <div class="box animate-fade-in delay-2">
@@ -42,6 +43,7 @@ script: post
             </ul>
         </div>
     </div>
+    {% endif %}
 </div>
 <a class="linkout skiplink" href="#main-content">Skip the table of contents and go to main content</a>
 <aside id="toc" class="table-of-contents-column animate-fade-in delay-4">

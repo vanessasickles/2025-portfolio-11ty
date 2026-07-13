@@ -154,3 +154,7 @@ h2 {
 .slide-in-top {
     animation: 0.5s 1 normal forwards slide-in-top;
 }
+
+blockquote {
+    @apply block italic text-4xl font-bold pl-8 border-l-12 border-l-blue my-8 leading-tight;
+}
