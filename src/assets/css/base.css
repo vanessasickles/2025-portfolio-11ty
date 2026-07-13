@@ -265,7 +265,7 @@ b {
 
 @media (prefers-reduced-motion: no-preference) {
     .animate-fade-in {
-        animation: 0.3s ease-in 1 both fade-in;
+        animation: 0.3s ease-out 1 both fade-in;
 
         &.delay-1 {
             animation-delay: 0.15s;

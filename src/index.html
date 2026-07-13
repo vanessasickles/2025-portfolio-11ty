@@ -11,7 +11,7 @@ layout: layouts/base.html
     <section class="projects mb-8 mt-8 xl:mb-12 xl:mt-0 animate-fade-in delay-2">
         <h2 class="mb-2">Projects</h2>
         <div class="box">
-            {%- for project in collections.project -%}
+            {%- for project in collections.projectsOrdered -%}
             <div class="project-wrap">
                 <article class="project" data-name="{{ project.data.pageTitle | classify }}" data-tech="{{ project.data.tech | arrayCommaJoin }}">
                     <a class="name" href="{{ project.url }}">{{ project.data.pageTitle }}</a>

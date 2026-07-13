@@ -90,6 +90,12 @@ export default function (eleventyConfig) {
 
 	eleventyConfig.addFilter('markdownify', (markdownString) => md.render(markdownString))
 
+	eleventyConfig.addCollection('projectsOrdered', async (collectionsApi) => {
+		return collectionsApi.getFilteredByTags('project').sort(function (a, b) {
+			return a.data.order - b.data.order
+		})
+	})
+
 	return {
 		dir: {
 			input: 'src'
