@@ -6,12 +6,13 @@ fullTitle: Building Beautiful Marketing Sites,<br> Ecomm&shy;erce <br>Exper&shy;
 blurb: Over many years, I've had the pleasure of bringing a number of beautiful designs to life on the web. I honed my affinity for solving tricky layout problems with clever HTML and CSS during my four years at a wonderful St. Louis marketing agency, Matchbox Design Group. My passion for turning thoughtful designs into functioal sites persists to this day; I'm always looking for more work in this area!
 tags: project
 tech:
-- html
-- css
-- javascript
-- php
-- wordpress
-- git
+- HTML
+- CSS
+- TailwindCSS
+- JavaScript
+- PHP
+- WordPress
+- Git
 ---
 
 ## Featured Sites
