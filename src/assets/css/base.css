@@ -95,7 +95,7 @@ footer {
     }
 }
 
-.box {
+@utility box {
     @apply border-1 border-black-tint dark:border-blue-tint p-4;
 
     @variant sm {
@@ -189,7 +189,7 @@ b {
         @apply text-xl;
     }
 
-    a {
+    a:not(.linkout) {
         @apply standard-link;
     }
 
@@ -227,6 +227,10 @@ b {
         figcaption {
             @apply text-base text-center mt-4 italic;
         }
+    }
+
+    hr {
+        @apply block my-12;
     }
 }
 
