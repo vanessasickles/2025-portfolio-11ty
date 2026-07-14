@@ -74,7 +74,7 @@ const highlightAnnotationColor = prefersDark ? annotationColorByTypeAndTheme['hi
 const lineAnnotationColor = prefersDark ? annotationColorByTypeAndTheme['line']['dark'] : annotationColorByTypeAndTheme['line']['light']
 
 const defaultHighlightSettings = { type: 'highlight', color: highlightAnnotationColor, animationDuration: 250, strokeWidth: 4, multiline: true, animate: !prefersReducedMotion, padding: '0 2px' }
-const allLinks = document.querySelectorAll('a:not(.linkout)')
+const allLinks = document.querySelectorAll('a:not(.linkout):not(.no-highlight)')
 
 allLinks.forEach(linkEl => {
     const annotation = annotate(linkEl, defaultHighlightSettings)
@@ -87,16 +87,27 @@ allLinks.forEach(linkEl => {
     })
 })
 
-const defaultDecorativeUnderlineSettings = { type: 'underline', color: lineAnnotationColor, animate: false, strokeWidth: 4, animate: false }
+const defaultDecorativeUnderlineSettings = { type: 'underline', color: lineAnnotationColor, strokeWidth: 4, animate: false }
 const allLevel2Headings = document.querySelectorAll('.content h2')
 allLevel2Headings.forEach(heading => {
     const annotation = annotate(heading, defaultDecorativeUnderlineSettings)
     annotation.show()
 })
 
-const defaultBoxSettings = { type: 'box', color: lineAnnotationColor, animate: false, strokeWidth: 6, padding: 0,  animate: !prefersReducedMotion }
-const allImages = document.querySelectorAll('.content img')
+const defaultBoxSettings = { type: 'box', color: lineAnnotationColor, strokeWidth: 6, padding: 0,  animate: !prefersReducedMotion }
+const allImages = document.querySelectorAll('.content figure img')
 allImages.forEach(image => {
     const annotation = annotate(image, defaultBoxSettings)
     annotation.show()
 })
+// const siteListItems = document.querySelectorAll('.site-list li')
+// siteListItems.forEach(el => {
+//     const annotation = annotate(el, defaultBoxSettings)
+//     el.addEventListener('mouseenter', () => {
+//         annotation.show()
+
+//         el.addEventListener('mouseleave', () => {
+//             annotation.hide()
+//         })
+//     })
+// })
