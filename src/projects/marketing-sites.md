@@ -4,6 +4,7 @@ pageTitle: Design to Digital Reality&#58; Sites and Layouts
 order: 0
 fullTitle: Building Beautiful Marketing Sites,<br> Ecomm&shy;erce <br>Exper&shy;iences,<br> and More
 blurb: Over many years, I've had the pleasure of bringing a number of beautiful designs to life on the web. I honed my affinity for solving tricky layout problems with clever HTML and CSS during my four years at a wonderful St. Louis marketing agency, Matchbox Design Group. My passion for turning thoughtful designs into functioal sites persists to this day; I'm always looking for more work in this area!
+closing: Thanks for sticking around to indulge in my thoughts. **I love this kind of frontend implementation** work, and would love to continue to expand my craft with **more complex work.** If you've got complex visual problems in need of solving, please reach out!
 tags: project
 tech:
 - HTML
@@ -183,11 +184,3 @@ I highly value pixel-perfect implementation in designs. I want a designer to see
 However, with a veritable menagerie of screen sizes in the world, **designers can't provide comps for everything.** For every screen size intentionally designed, there will always be viewing sizes in-between. As a developer, I often find these screen sizes on my own devices as I work, requiring a creative re-implementation of a design at a new scale.
 
 When considering this, I look back to the **intent of the design** as mentioned earlier. I pair this with the proportions in the given screens to create a faithful version of the design that maintains its creative vision at every pixel in-between.
-
-<hr>
-
-**Still reading?** Thanks for sticking around to indulge in my thoughts. **I love this kind of frontend implementation** work, and would love to continue to expand my craft with **more complex work.**
-
-If you've got complex visual problems in need of solving, please reach out!
-
-<a href="https://www.linkedin.com/in/vanessasickles/" class="linkout" target="_blank">{% icon "linkedin" %} Contact me on LinkedIn</a>

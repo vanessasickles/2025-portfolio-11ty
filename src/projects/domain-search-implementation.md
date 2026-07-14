@@ -4,6 +4,7 @@ pageTitle: Domain Search UX and API Imple&shy;men&shy;tation
 order: 2
 fullTitle: Implementing a Domain Search API from Scratch in a New User Interface
 blurb: At a prior place of employment, I was tasked to develop a domain search experience from the ground up in **Vue.js** and **PHP**, implementing several existing APIs in the process, and augmenting another **Ruby on Rails API** with additional endpoints to support the feature's data needs.
+closing: Thanks for reading my thoughts! While the code for this project is proprietary, and the **interactive features** have made the experiences **difficult to archive with web tools,** I'm proud of the complex problems I solved and would love to discuss them more with you. If you're looking for a **passionate developer of systems and clever software engineering,** please don't hesitate to reach out!
 tags: project
 tech:
 - Vue.js
@@ -37,6 +38,6 @@ On the technical side, you also want to make sure that you're storing and updati
 When working with a reactive framework like Vue.js, one common pitfall I've witnessed is **the urge to make everything reactive.** For example, a user's input is useful to watch and keep track of for when they eventually initiate a new search, but you also want to keep track of what they previously searched with so that you don't re-initiate a new search needlessly, or so that you can track the difference between their current input and their previous one. There are also many "in-between" states while waiting for asynchronous data to load. **Designing what data to store, as well as when and how to store them,** was one of the fun challenges that came with this project.
 
 ## Building quality of life features
-One of the most fun features I worked on in the project was the dynamic result filter system. The easy reactivity of Vue.js as a framework offered a snappy experience, allowing a user to instantly filter results by price, length, TLD, and more. This included a double-ended range slider component made modular and re-useable by passing in different data paths with props. It was also fun to optimize, ensuring that the multiple bite-sized filter functions ran with minimal looping over large datasets.
+One of the most fun features I worked on in the project was the **dynamic result filter system.** The easy reactivity of Vue.js as a framework offered a snappy experience, allowing a user to **instantly filter results by price, length, TLD, and more.** This included a double-ended range slider component made modular and re-useable by passing in different data paths with props. It was also fun to optimize, ensuring that the multiple bite-sized filter functions ran with **minimal looping over large datasets.**
 
 Starting a new product from the ground-up also let me focus on accessibility, ensuring that inputs were keyboard-accessible and properly associated with labels (and marked with sensible `aria-label`ing when labelled atypically in the design).

@@ -4,6 +4,7 @@ pageTitle: Portfolio Site with 11ty, Tailwind&shy;CSS
 order: 1
 fullTitle: Building a Portfolio Site with 11ty, Tailwind CSS, JavaScript, and Vite
 blurb: After many years, I felt that I needed a new portfolio site to showcase my work. I wanted to create something new and starkly different from anything I'd created before, so I branched out into something more minimal and typographic. I experimented with a static site generator that had always interested me, and focused on a layout that emphasizes my tech stack and experience.
+closing: Thanks so much for your time and attention; I hope you enjoyed! **I love experimenting with new tools like 11ty,** and would love to **learn any technology your team uses** to solve difficult problems! Please don't hesitate to reach out.
 tags: project
 githubUrl: https://github.com/vanessasickles/2025-portfolio-11ty
 tech:

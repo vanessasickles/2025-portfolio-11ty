@@ -54,6 +54,14 @@ script: post
 </aside>
 <main id="main-content" class="content animate-fade-in delay-3">
     {{ content }}
+
+    <hr>
+
+    {% if closing %}
+        <b>Still reading?</b> {{ closing | markdownify }}
+    {% endif %}
+
+    <a href="https://www.linkedin.com/in/vanessasickles/" class="linkout" target="_blank">{% icon "linkedin" %} Contact me on LinkedIn</a>
 </main>
 <div class="back-to-top-wrap fixed left-2 md:left-4 bottom-0 font-bold text-xl bg-white dark:bg-black border-blue border-2 z-30 py-1 px-4 rounded-full">
     <a id="back-to-top" href="#top">

@@ -4,6 +4,7 @@ pageTitle: Posting Table Generator
 order: 3
 fullTitle: Building a Custom HTML/CSS Posting Table Generator with Vue.js and Pinia
 blurb: In some online communities, collaborative writers participate in joint storytelling with their original characters. While doing so, many want to decorate their writing ("posts") with a certain aesthetic. They will use custom HTML and CSS to decorate their posts, and in the process, often end up creating unresponsive or layout-breaking codes. To address this problem, I used **Vue.js** and **Pinia** to create an interactive interface for visually creating and customizing these posting tables, which consistently generates non-breaking code for them to use instead.
+closing: Thanks for taking a peek into my hobby project! I love **creating tools that save people time and sanity,** for both developers and users alike! I would love to find fun, interactive ways to improve the world with you! Please reach out if you are looking for **a human-focused developer with a passion for process!**
 tags: project
 githubUrl: https://gitfront.io/r/vanessasickles/Y5Em9KYoAwwN/table-generator/
 liveUrl: https://vue-table-generator.netlify.app/
@@ -64,7 +65,7 @@ I knew that **this thing would have a *lot* of inputs**. Inputs would be the mai
 
 Additionally, with the `for` prop, I can tell the input what object to nest its path value under. This is important in the code generation step, as there are several places we want to apply the inline styles when generating the final code (for example, will this style go on a character speech span, or will it go on the table's overall wrapping `div`?).
 
-You can [check out the code for this component](https://github.com/vanessasickles/table-generator/blob/master/src/components/StyleInput.vue) in the project files, but here's a cross-section of a few different types of inputs this component supports:
+You can [check out the code for this component](https://gitfront.io/r/vanessasickles/Y5Em9KYoAwwN/table-generator/blob/src/components/StyleInput.vue) in the project files, but here's a cross-section of a few different types of inputs this component supports:
 
 ```js
 // A color input that saves its value to the speechStyles object ("for") to the "color" path
